@@ -1,13 +1,17 @@
 
 CONFIG +=
-QT       += core gui
+#QT       += core gui
 QT       += opengl
 QT       += xml
+QT       += printsupport
+QT       += widgets
+QT += uitools
+
 
 TARGET = zomedomeetcie
 TEMPLATE = app
 
-#la ligne suivante n est a rajouter que sous linux
+#la ligne suivante n est a rajouter que sous linux mais a virer pour la compilation mac et windows
 LIBS += -lGLU
 
 # Input

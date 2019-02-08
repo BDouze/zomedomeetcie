@@ -7,7 +7,7 @@
 #include "voutenidabeille.h"
 
 /*
-    là c'est le dessin 3d de notre structure
+    lÃ  c'est le dessin 3d de notre structure
 */
 
 class Patch;

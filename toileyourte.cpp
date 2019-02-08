@@ -8,7 +8,7 @@ ToileYourte::ToileYourte()
 {
 }
 
-void ToileYourte::setParametres(double toil_hauteurMur, int toil_penteYourte, double toil_diametreYourte, double toil_diametreTonoo, double toil_largeurLaize, int toil_orientation, double toil_decalage)
+void ToileYourte::setParametres(double toil_hauteurMur, int toil_penteYourte, double toil_diametreYourte, double toil_diametreTonoo, double toil_largeurLaize, int toil_orientation, double toil_decalage,int toil_typeCouture, double toil_largeurCouture)
 {
     toi_hauteurMur = toil_hauteurMur;
     toi_penteYourte = radians(toil_penteYourte);
@@ -17,6 +17,8 @@ void ToileYourte::setParametres(double toil_hauteurMur, int toil_penteYourte, do
     toi_largeurLaize = toil_largeurLaize;
     toi_orientation = radians(toil_orientation);
     toi_decalage = toil_decalage;
+    toi_choixCouture = toil_typeCouture;
+    toi_largeurCouture = toil_largeurCouture;
 
     calcul();
 }
@@ -157,7 +159,7 @@ void ToileYourte::toiDessinToileMorceau(QPaintDevice *des, int ch)
     //on cherche le centre
     double x0 = dim.width()/2.0;
     double y0 = dim.height();
-    //on cherche le coin en bas à gauche
+    //on cherche le coin en bas Ã  gauche
     double x02 = 20.0;
     double y02 = dim.height()-20.0;
     // on cherche l echelle
@@ -306,30 +308,35 @@ int ToileYourte::toiNombMorceaux()
 QString ToileYourte::toiExplicationToile()
 {
     QString str,str2,str3,str4,str5,resu;
-    resu = "<html><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Avant toute chose, une précision : ce logiciel donne la découpe de la toile pour une héliyourte mais aussi pour une yourte classique si on choisit les bons paramètres (pente de toit, hauteur des murs, diamètre extérieur). Le seul paramètre que l\'on n\'a pas directement dans le cas d\'une héliyourte et que l\'on connait dans le cas d\'une yourte classique est le diamètre du tonoo. Dans ce logiciel, il suffit d\'augmenter le nombre de pans pour obtenir le diamètre souhaité !")+"</p>";
+    resu = "<html><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Avant toute chose, une prÃ©cision : ce logiciel donne la dÃ©coupe de la toile pour une hÃ©liyourte mais aussi pour une yourte classique si on choisit les bons paramÃ¨tres (pente de toit, hauteur des murs, diamÃ¨tre extÃ©rieur). Le seul paramÃ¨tre que l\'on n\'a pas directement dans le cas d\'une hÃ©liyourte et que l\'on connait dans le cas d\'une yourte classique est le diamÃ¨tre du tonoo. Dans ce logiciel, il suffit d\'augmenter le nombre de pans pour obtenir le diamÃ¨tre souhaitÃ© !")+"</p>";
     resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A) "+QObject::tr("Les Murs")+"</strong></span></p>";
     double peri = pi*toi_diametreYourte;
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le périmètre de cette héliyourte est de ")+"<strong>"+str.setNum(peri,'f',2)+" m</strong>"+QObject::tr(", la hauteur des murs est de ")+str2.setNum(toi_hauteurMur,'f',2)+QObject::tr(" m, soit une surface minimum de ")+"<strong>"+str3.setNum(toi_hauteurMur*peri,'f',2)+" m²</strong>"+QObject::tr(". Surface à laquelle il faut retirer les surfaces de la porte et des vitres. Toutefois, selon la configuration de votre yourte, il peut être intéressant de rajouter de la surface de toile en bas et en haut des murs. De notre côté, nous avons l\'habitude de compter 15 cm de plus en haut, pour faire un ourlet avec une cordelette à l`intérieur afin de pouvoir serrer le haut du mur juste en bas du toit, au dessus du début des perches. De même, nous rajoutons environ 25 cm en bas de mur, pour venir serrer de la même façon la toile sous le plancher de la yourte (si celle-ci est posée en hauteur)")+".</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le plus important étant de s\'économiser des coutures, l\'idéal est de trouver le tissu avec une largeur de laize suffisante pour couvrir toute la hauteur du mur. Ou au pire, une largeur de laize égale à la moitié (par ex, pour une yourte avec des murs haut de 1 m 90, une largeur de laize de 1 m 20 est pratique, car une fois deux largeurs cousues ensemble, cela représente environ 2 m 35 soit 45 cm de plus que la hauteur des murs, pour réaliser les ourlets du haut et du bas)")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le pÃ©rimÃ¨tre de cette hÃ©liyourte est de ")+"<strong>"+str.setNum(peri,'f',2)+" m</strong>"+QObject::tr(", la hauteur des murs est de ")+str2.setNum(toi_hauteurMur,'f',2)+QObject::tr(" m, soit une surface minimum de ")+"<strong>"+str3.setNum(toi_hauteurMur*peri,'f',2)+" mÂ²</strong>"+QObject::tr(". Surface Ã  laquelle il faut retirer les surfaces de la porte et des vitres. Toutefois, selon la configuration de votre yourte, il peut Ãªtre intÃ©ressant de rajouter de la surface de toile en bas et en haut des murs. De notre cÃ´tÃ©, nous avons l\'habitude de compter 15 cm de plus en haut, pour faire un ourlet avec une cordelette Ã  l`intÃ©rieur afin de pouvoir serrer le haut du mur juste en bas du toit, au dessus du dÃ©but des perches. De mÃªme, nous rajoutons environ 25 cm en bas de mur, pour venir serrer de la mÃªme faÃ§on la toile sous le plancher de la yourte (si celle-ci est posÃ©e en hauteur)")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le plus important Ã©tant de s\'Ã©conomiser des coutures, l\'idÃ©al est de trouver le tissu avec une largeur de laize suffisante pour couvrir toute la hauteur du mur. Ou au pire, une largeur de laize Ã©gale Ã  la moitiÃ© (par ex, pour une yourte avec des murs haut de 1 m 90, une largeur de laize de 1 m 20 est pratique, car une fois deux largeurs cousues ensemble, cela reprÃ©sente environ 2 m 35 soit 45 cm de plus que la hauteur des murs, pour rÃ©aliser les ourlets du haut et du bas)")+".</p>";
     resu += "<p align=center><img height=\"565\" width=\"243\" src=\":/images/hly/hlyToileMur\" /></p>";
     resu += "<p><br /></p>";
     double longmax = 0.0;
     for(int i=0;i<TsLesMorcDetail.size();i++)
         longmax += TsLesMorcDetail[i].longueur;
     resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B) "+QObject::tr("Le Toit")+"</strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour découper tous les morceaux, il faut, au maximum  ")+"<strong>"+str.setNum(longmax,'f',2)+" ml</strong>"+QObject::tr(" (mètres linéaires) de tissu de largeur de laize ")+str2.setNum(toi_largeurLaize,'f',2)+QObject::tr(" m, soit une surface maximum de ")+"<strong>"+str3.setNum(toi_largeurLaize*longmax,'f',2)+" m²</strong>.</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Cette surface peut être réduite d\'une façon simple : après avoir exporté vos résultats en pdf, imprimer le plan global de la toile de toit (celui avec tous les morceaux) puis découpez tous les morceaux séparément. Ensuite il suffit de les placer à la suite, sur une laize de tissu fictive, en essayant de limiter les pertes. Une fois que vous avez placé toutes vos pièces, en mesurant la longueur totale, vous pouvez facilement déduire le métrage de tissu à prévoir (N\'hésitez pas à coller votre \'calpinage\', il vous sera utile pour découper la toile pour de vrai !)")+".</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Les morceaux de toile de toit donnés par ce logiciel ne suffisent pas pour couvrir le toit : il faut rajouter en bas de toit une bande de tissu d\'environ 25 cm de largeur, qui sera d'un côté cousue au toit, et de l\'autre côté avec un gros ourlet dans lequel passe une corde (genre cordelette de 8mm de diamètre) afin de serrer la toile de toit bien proprement sur le haut des murs")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour dÃ©couper tous les morceaux, il faut, au maximum  ")+"<strong>"+str.setNum(longmax,'f',2)+" ml</strong>"+QObject::tr(" (mÃ¨tres linÃ©aires) de tissu de largeur de laize ")+str2.setNum(toi_largeurLaize,'f',2)+QObject::tr(" m, soit une surface maximum de ")+"<strong>"+str3.setNum(toi_largeurLaize*longmax,'f',2)+" mÂ²</strong>.</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Cette surface peut Ãªtre rÃ©duite d\'une faÃ§on simple : aprÃ¨s avoir exportÃ© vos rÃ©sultats en pdf, imprimer le plan global de la toile de toit (celui avec tous les morceaux) puis dÃ©coupez tous les morceaux sÃ©parÃ©ment. Ensuite il suffit de les placer Ã  la suite, sur une laize de tissu fictive, en essayant de limiter les pertes. Une fois que vous avez placÃ© toutes vos piÃ¨ces, en mesurant la longueur totale, vous pouvez facilement dÃ©duire le mÃ©trage de tissu Ã  prÃ©voir (N\'hÃ©sitez pas Ã  coller votre \'calpinage\', il vous sera utile pour dÃ©couper la toile pour de vrai !)")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Les morceaux de toile de toit donnÃ©s par ce logiciel ne suffisent pas pour couvrir le toit : il faut rajouter en bas de toit une bande de tissu d\'environ 25 cm de largeur, qui sera d'un cÃ´tÃ© cousue au toit, et de l\'autre cÃ´tÃ© avec un gros ourlet dans lequel passe une corde (genre cordelette de 8mm de diamÃ¨tre) afin de serrer la toile de toit bien proprement sur le haut des murs")+".</p>";
     resu += "<p align=center><img height=\"400\" width=\"600\" src=\":/images/hly/hlyToileVue\" /></p>";
     int divlaize = qRound(toi_largeurLaize/0.25);
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour la bande de bas de toit, dans le cas de cette yourte, il vous faut compter ")+"<strong>"+str.setNum(peri/divlaize,'f',2)+" ml</strong>"+QObject::tr(" supplémentaires de tissu de largeur de laize ")+str2.setNum(toi_largeurLaize,'f',2)+QObject::tr(" m, soit ")+"<strong>"+str3.setNum(toi_largeurLaize*peri/divlaize,'f',2)+" m²</strong>"+QObject::tr(", que vous découperez en ")+str4.setNum(divlaize)+QObject::tr(" bandes de ")+str5.setNum(toi_largeurLaize/divlaize*100.0,'f',1)+QObject::tr(" cm de largeur, qui une fois assemblées bout à bout, feront le tour de la yourte.")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour la bande de bas de toit, dans le cas de cette yourte, il vous faut compter ")+"<strong>"+str.setNum(peri/divlaize,'f',2)+" ml</strong>"+QObject::tr(" supplÃ©mentaires de tissu de largeur de laize ")+str2.setNum(toi_largeurLaize,'f',2)+QObject::tr(" m, soit ")+"<strong>"+str3.setNum(toi_largeurLaize*peri/divlaize,'f',2)+" mÂ²</strong>"+QObject::tr(", que vous dÃ©couperez en ")+str4.setNum(divlaize)+QObject::tr(" bandes de ")+str5.setNum(toi_largeurLaize/divlaize*100.0,'f',1)+QObject::tr(" cm de largeur, qui une fois assemblÃ©es bout Ã  bout, feront le tour de la yourte.")+".</p>";
     resu += "<p><br /></p>";
     resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C) "+QObject::tr("La Capote")+"</strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Jusqu\'ici nous n\'avons pas abordé le problème de la couverture du haut du tonoo. Cela va dépendre de la finition de votre tonoo, s\'il est vitré et étanche, peut-être que vous n\'aurait pas besoin de capote. Si jamais il vous en faut une (un jour j\'intégrerai une fonction pour dessiner les plans de la capote sur mesure !!!), sachez qu\'il vous faut prévoir au minimum un carré de toile supplémentaire de côté égal à trois fois le diamètre de votre tonoo.")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Jusqu\'ici nous n\'avons pas abordÃ© le problÃ¨me de la couverture du haut du tonoo. Cela va dÃ©pendre de la finition de votre tonoo, s\'il est vitrÃ© et Ã©tanche, peut-Ãªtre que vous n\'aurait pas besoin de capote. Si jamais il vous en faut une (un jour j\'intÃ©grerai une fonction pour dessiner les plans de la capote sur mesure !!!), sachez qu\'il vous faut prÃ©voir au minimum un carrÃ© de toile supplÃ©mentaire de cÃ´tÃ© Ã©gal Ã  trois fois le diamÃ¨tre de votre tonoo.")+".</p>";
     resu += "<p><br /></p>";
     resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D) "+QObject::tr("La Couture")+"</strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Nous vous conseillons d\'utiliser le type de couture D que nous expliquons dans notre document dédié à la couture de toile que vous trouverez ")+"<a href=\"http://ardheia.free.fr/documents_ardheia/toiles.pdf\">"+QObject::tr("ici")+"</a>.</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Après avoir découpé tous les morceaux de toit, vous pouvez les assembler en veillant à respecter le sens d'écoulement de l\'eau. Une fois tous les morceaux assemblés, vous pouvez faire la couture qui \'ferme\' le cone de toit, en gardant toujours en tête l\'écoulement de l\'eau. Puis vous ferez un petit ourlet au niveau du tonoo, et vous rajouterez la bande en bas de toit, sur laquelle vous aurez préalablement fais un ourlet avec la corde dedans (lorsque vous faites un ourlet avec une corde qui passe à l\'intérieur, n'\hésitez pas à faire un ourlet suffisamment grand pour que la corde puisse coulisser, et veillez à passer la corde au fur et à mesure de la réalisation de l\'ourlet, ça sera beaucoup plus simple que de la faire passer à la fin !!!)")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Nous vous conseillons d\'utiliser le type de couture D que nous expliquons dans notre document dÃ©diÃ© Ã  la couture de toile que vous trouverez ")+"<a href=\"http://www.ardheia.fr/documents_ardheia/toiles.pdf\">"+QObject::tr("ici")+"</a>.</p>";
+    if(toi_choixCouture==0)
+        str = "rabattue";
+    else
+        str = "simple";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour rappel, vous avez choisi une couture de type ")+"<strong>"+str+"</strong>"+QObject::tr(" de largeur ")+"<strong>"+str2.setNum(toi_largeurCouture,'f',1)+" cm</strong>.</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("AprÃ¨s avoir dÃ©coupÃ© tous les morceaux de toit, vous pouvez les assembler en veillant Ã  respecter le sens d'Ã©coulement de l\'eau. Une fois tous les morceaux assemblÃ©s, vous pouvez faire la couture qui \'ferme\' le cone de toit, en gardant toujours en tÃªte l\'Ã©coulement de l\'eau. Puis vous ferez un petit ourlet au niveau du tonoo, et vous rajouterez la bande en bas de toit, sur laquelle vous aurez prÃ©alablement fais un ourlet avec la corde dedans (lorsque vous faites un ourlet avec une corde qui passe Ã  l\'intÃ©rieur, n\'hÃ©sitez pas Ã  faire un ourlet suffisamment grand pour que la corde puisse coulisser, et veillez Ã  passer la corde au fur et Ã  mesure de la rÃ©alisation de l\'ourlet, Ã§a sera beaucoup plus simple que de la faire passer Ã  la fin !!!)")+".</p>";
 
 
 
@@ -339,11 +346,23 @@ QString ToileYourte::toiExplicationToile()
 
 void ToileYourte::calcul()
 {
-    toi_perteCouture = 0.045;
-    toi_perteCoutureOurlet = 0.03;
+    //couture rabattue
+    if(toi_choixCouture==0)
+    {
+        //perte couture par cote
+        toi_perteCouture = 1.5*toi_largeurCouture/100.0;
+    }
+    else
+    //couture simple
+    {
+        toi_perteCouture = 0.5*toi_largeurCouture/100.0;
+    }
+
+    toi_perteCoutureOurlet = 2.0*toi_largeurCouture/100.0;
+
     toi_rayonYourteFictif = toi_diametreYourte/(2.0*qCos(toi_penteYourte))+0.04+toi_perteCouture;
-    toi_rayonTonooFictif = toi_diametreTonoo/(2.0*qCos(toi_penteYourte))-0.04;
-    toi_largeurLaizeUtile = toi_largeurLaize-toi_perteCouture;
+    toi_rayonTonooFictif = toi_diametreTonoo/(2.0*qCos(toi_penteYourte))-0.02-toi_perteCoutureOurlet;
+    toi_largeurLaizeUtile = toi_largeurLaize-2.0*toi_perteCouture;
 
     toi_perimetreBasFictif = 2.0*pi*toi_rayonYourteFictif;
     toi_perimetreBas =  toi_perimetreBasFictif*qCos(toi_penteYourte);
@@ -353,12 +372,15 @@ void ToileYourte::calcul()
     double angle = radians(60);
 
     double angleCalcul = angle;
-    toi_angleDebutTonoo = qAsin((toi_rayonTonooFictif*qSin(angleCalcul)-toi_perteCouture)/toi_rayonTonooFictif);
+    //on cherche l angle de depart du tonoo pour prendre en compte la couture tout le long en prenant les 2 marges de la couture du meme cote
+    toi_angleDebutTonoo = qAsin((toi_rayonTonooFictif*qSin(angleCalcul)-2.0*toi_perteCouture)/toi_rayonTonooFictif);
+    // on peut donc trouver A2 au niveau du tonoo qui prend en compte cette marge
     toi_A2 = QVector2D(toi_rayonTonooFictif*qCos(toi_angleDebutTonoo),toi_rayonTonooFictif*qSin(toi_angleDebutTonoo));
+    // et la on cherche l angle complet au niveau du tonoo
     toi_angleTonoo = 2.0*pi*toi_perimetreBas/toi_perimetreBasFictif+angleCalcul-toi_angleDebutTonoo;
     toi_C2 = QVector2D(toi_rayonTonooFictif*qCos(toi_angleDebutTonoo+toi_angleTonoo),toi_rayonTonooFictif*qSin(toi_angleDebutTonoo+toi_angleTonoo));
     angleCalcul = qAsin(toi_rayonTonooFictif*qSin(angle)/toi_rayonYourteFictif);
-    toi_angleDebutYourte = qAsin((toi_rayonYourteFictif*qSin(angleCalcul)-toi_perteCouture)/toi_rayonYourteFictif);
+    toi_angleDebutYourte = qAsin((toi_rayonYourteFictif*qSin(angleCalcul)-2.0*toi_perteCouture)/toi_rayonYourteFictif);
     toi_B2 = QVector2D(toi_rayonYourteFictif*qCos(toi_angleDebutYourte),toi_rayonYourteFictif*qSin(toi_angleDebutYourte));
     toi_angleYourte = 2.0*pi*toi_perimetreHaut/toi_perimetreHautFictif+angleCalcul-toi_angleDebutYourte;
     toi_D2 = QVector2D(toi_rayonYourteFictif*qCos(toi_angleDebutYourte+toi_angleYourte),toi_rayonYourteFictif*qSin(toi_angleDebutYourte+toi_angleYourte));
@@ -366,7 +388,7 @@ void ToileYourte::calcul()
     int deb_compt = -(int)((toi_rayonYourteFictif+3.00)/toi_largeurLaizeUtile+1.00);
     int fin_compt = -deb_compt;
 
-    // alors dans l idee on va tourner notre plan pour que orientation soit à 0
+    // alors dans l idee on va tourner notre plan pour que orientation soit Ã  0
     toi_A2 = rotation2DautourOrigine(toi_A2,-toi_orientation);
     toi_B2 = rotation2DautourOrigine(toi_B2,-toi_orientation);
     toi_C2 = rotation2DautourOrigine(toi_C2,-toi_orientation);
@@ -467,6 +489,28 @@ void ToileYourte::calcul()
         {
             tablLigne[i].ch="0120";
             tablLigne[i].pts[3]=tablLigne[i].pts[4];
+        }
+        if((tablLigne[i].ch=="013130"))
+        {
+            tablLigne[i].ch="0133";
+            tablLigne[i].pts[3]=tablLigne[i].pts[4];
+        }
+        if((tablLigne[i].ch=="011330"))
+        {
+            tablLigne[i].ch="0133";
+            tablLigne[i].pts[2]=tablLigne[i].pts[3];
+            tablLigne[i].pts[3]=tablLigne[i].pts[4];
+        }
+        if((tablLigne[i].ch=="011303"))
+        {
+            tablLigne[i].ch="0133";
+            tablLigne[i].pts[2]=tablLigne[i].pts[3];
+            tablLigne[i].pts[3]=tablLigne[i].pts[5];
+        }
+        if((tablLigne[i].ch=="013103"))
+        {
+            tablLigne[i].ch="0133";
+            tablLigne[i].pts[3]=tablLigne[i].pts[5];
         }
         if(tablLigne[i].ch=="01240")
         {
@@ -1733,10 +1777,10 @@ void ToileYourte::calcul()
     }
     for(int i=0;i<TsLesMorcDetail.size();i++)
     {
-        TsLesMorcDetail[i].centre0.setY(TsLesMorcDetail[i].centre0.y()+toi_perteCouture/2.0);
+        TsLesMorcDetail[i].centre0.setY(TsLesMorcDetail[i].centre0.y()+toi_perteCouture);
         for(int j=0;j<TsLesMorcDetail[i].pts.size();j++)
         {
-            TsLesMorcDetail[i].pts[j].y += toi_perteCouture/2.0;
+            TsLesMorcDetail[i].pts[j].y += toi_perteCouture;
         }
     }
     for(int i=0;i<TsLesMorcDetail.size();i++)
@@ -1746,7 +1790,7 @@ void ToileYourte::calcul()
         morctamp.trait << TsLesMorcDetail[i].trait[0];
         for(int j=1;j<TsLesMorcDetail[i].pts.size();j++)
         {
-            if((TsLesMorcDetail[i].pts[j].y==TsLesMorcDetail[i].pts[j-1].y)&&(TsLesMorcDetail[i].pts[j].y<=toi_perteCouture/2.0+0.1))
+            if((TsLesMorcDetail[i].pts[j].y==TsLesMorcDetail[i].pts[j-1].y)&&(TsLesMorcDetail[i].pts[j].y<=toi_perteCouture+0.1))
             {
                 PointToile pp1,pp2;
                 pp1.x = TsLesMorcDetail[i].pts[j-1].x;
@@ -1756,7 +1800,7 @@ void ToileYourte::calcul()
                 morctamp.pts << pp1 << pp2;
                 morctamp.trait << 2 << 2;
             }
-            if((TsLesMorcDetail[i].pts[j].y==TsLesMorcDetail[i].pts[j-1].y)&&(TsLesMorcDetail[i].pts[j].y>=(-toi_perteCouture/2.0+toi_largeurLaize-0.01)))
+            if((TsLesMorcDetail[i].pts[j].y==TsLesMorcDetail[i].pts[j-1].y)&&(TsLesMorcDetail[i].pts[j].y>=(-toi_perteCouture+toi_largeurLaize-0.01)))
             {
                 PointToile pp1,pp2;
                 pp1.x = TsLesMorcDetail[i].pts[j-1].x;
@@ -1768,7 +1812,7 @@ void ToileYourte::calcul()
             }
             morctamp.pts << TsLesMorcDetail[i].pts[j];
             morctamp.trait << TsLesMorcDetail[i].trait[j];
-            if((j==(TsLesMorcDetail[i].pts.size()-1))&&(TsLesMorcDetail[i].pts[j].y==TsLesMorcDetail[i].pts[0].y)&&(TsLesMorcDetail[i].pts[j].y>=(-toi_perteCouture/2.0+toi_largeurLaize-0.01)))
+            if((j==(TsLesMorcDetail[i].pts.size()-1))&&(TsLesMorcDetail[i].pts[j].y==TsLesMorcDetail[i].pts[0].y)&&(TsLesMorcDetail[i].pts[j].y>=(-toi_perteCouture+toi_largeurLaize-0.01)))
             {
                 PointToile pp1,pp2;
                 pp1.x = TsLesMorcDetail[i].pts[j].x;

@@ -100,6 +100,8 @@ private slots:
     void on_hlyToileOrientation_valueChanged();
     void on_hlyToileDecalage_valueChanged();
     void on_hlyToileChoixMorceau_currentIndexChanged(int choix);
+    void on_hlyTypeCouture_currentIndexChanged(int choix);
+    void on_hlyLargeurCouture_valueChanged();
 
     // la c est pour le geodome
     void on_geoSolideBase_currentIndexChanged(int choix);
@@ -113,15 +115,15 @@ private slots:
     void on_ongletsGeodome_currentChanged(int choix);
 
     // la c'est les actions des menus
-    void on_actionA_propos_activated();
-    void on_actionCouleurs_distinctes_activated();
-    void on_actionExporter_resultats_PDF_activated();
-    void on_actionExporter_capture_3D_activated();
-    void on_actionExporter_en_format_Obj_activated();
-    void on_actionOuvrir_activated();
-    void on_actionEnregistrer_activated();
-    void on_actionEnregistrer_sous_activated();
-    void on_actionQuitter_activated();
+    void on_actionA_propos_triggered();
+    void on_actionCouleurs_distinctes_triggered();
+    void on_actionExporter_resultats_PDF_triggered();
+    void on_actionExporter_capture_3D_triggered();
+    void on_actionExporter_en_format_Obj_triggered();
+    void on_actionOuvrir_triggered();
+    void on_actionEnregistrer_triggered();
+    void on_actionEnregistrer_sous_triggered();
+    void on_actionQuitter_triggered();
 
     void ouvrir(QString nom);
 

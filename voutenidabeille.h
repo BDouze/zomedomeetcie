@@ -5,7 +5,7 @@
 #include <QVector3D>
 
 /*
-  l‡ c'est les calculs de notre structure en fonction des paramËtres de la fenetre principale
+  l√† c'est les calculs de notre structure en fonction des param√®tres de la fenetre principale
 */
 
 struct chevronCoupe

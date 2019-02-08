@@ -1,7 +1,8 @@
 #ifndef PARAMETRES_H
 #define PARAMETRES_H
 
-#include <QtGui>
+//#include <QtGui>
+#include <QtWidgets>
 
 int finesse();
 QString version();
