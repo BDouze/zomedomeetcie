@@ -4,6 +4,7 @@
 #include <QPaintDevice>
 #include <QVector2D>
 #include <QVector>
+#include <QString>
 
 struct PointToile
 {
@@ -30,7 +31,7 @@ class ToileYourte
 {
 public:
     ToileYourte();
-    void setParametres(double toil_hauteurMur, int toil_penteYourte, double toil_diametreYourte, double toil_diametreTonoo, double toil_largeurLaize, int toil_orientation, double toil_decalage);
+    void setParametres(double toil_hauteurMur, int toil_penteYourte, double toil_diametreYourte, double toil_diametreTonoo, double toil_largeurLaize, int toil_orientation, double toil_decalage, int toil_typeCouture, double toil_largeurCouture);
     void calcul();
     void toiDessinToileGeneral(QPaintDevice * des, int taille);
     void toiDessinToileMorceau(QPaintDevice * des,int ch);
@@ -62,6 +63,8 @@ public:
     double toi_perimetreBasFictif;
     double toi_perimetreHaut;
     double toi_perimetreHautFictif;
+    double toi_largeurCouture;
+    int toi_choixCouture;
     QVector2D toi_A2,toi_B2;
     QVector2D toi_C2,toi_D2;
     double toi_angleDebutTonoo, toi_angleDebutYourte;

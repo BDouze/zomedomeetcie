@@ -45,38 +45,38 @@ QString domenidabeille::explicationChevronNumero(int num)
     resu += "<p>"+QObject::tr("Il y a")+" <strong>"+str.setNum((double)dna_NbreLosangesHorizontal,'f',0)+"</strong> "+QObject::tr("chevrons de type")+" "+(char)(num+65);
     if(chev[num].orientation==0)
     {
-        resu += ". "+QObject::tr("Ces chevrons sont penchés à droite")+". ";
+        resu += ". "+QObject::tr("Ces chevrons sont penchÃ©s Ã  droite")+". ";
         if(chev[num].tronque==1)
-            resu += QObject::tr("Ils sont tronqués sur leur côté CD sur le Tonoo")+".</p>";
+            resu += QObject::tr("Ils sont tronquÃ©s sur leur cÃ´tÃ© CD sur le Tonoo")+".</p>";
         if(chev[num].tronque==2)
-            resu += QObject::tr("Ils sont tronqués sur leur côté AB sur la Sablière")+".</p>";
+            resu += QObject::tr("Ils sont tronquÃ©s sur leur cÃ´tÃ© AB sur la SabliÃ¨re")+".</p>";
         if(chev[num].tronque==0)
             resu += "</p>";
     }
     else
     {
-        resu += ". "+QObject::tr("Ces chevrons sont penchés à gauche")+". ";
+        resu += ". "+QObject::tr("Ces chevrons sont penchÃ©s Ã  gauche")+". ";
         if(chev[num].tronque==1)
-            resu += QObject::tr("Ils sont tronqués sur leur côté AB sur le Tonoo")+".</p>";
+            resu += QObject::tr("Ils sont tronquÃ©s sur leur cÃ´tÃ© AB sur le Tonoo")+".</p>";
         if(chev[num].tronque==2)
-            resu += QObject::tr("Ils sont tronqués sur leur côté CD sur la Sablière")+".</p>";
+            resu += QObject::tr("Ils sont tronquÃ©s sur leur cÃ´tÃ© CD sur la SabliÃ¨re")+".</p>";
         if(chev[num].tronque==0)
             resu += "</p>";
     }
-    resu += "<p>"+QObject::tr("Dimensions des planches dans lesquelles ces chevrons seront taillés")+" :<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("épaisseur")+" : <strong>" + str.setNum(dna_epaisseurChevron*100.0,'f',1)+"</strong> cm<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombée")+" : <strong>" + str.setNum(chev[num].A.y()*100.0,'f',1)+"</strong> cm<br />";
+    resu += "<p>"+QObject::tr("Dimensions des planches dans lesquelles ces chevrons seront taillÃ©s")+" :<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Ã©paisseur")+" : <strong>" + str.setNum(dna_epaisseurChevron*100.0,'f',1)+"</strong> cm<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombÃ©e")+" : <strong>" + str.setNum(chev[num].A.y()*100.0,'f',1)+"</strong> cm<br />";
     resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("longueur")+" : <strong>" + str.setNum(chev[num].C.x()*100.0,'f',1)+"</strong> cm</p>";
     resu += "<p>"+QObject::tr("Dimensions des chevrons courbes")+" :<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombée")+" : <strong>" + str.setNum(dna_retombeeChevron*100,'f',1)+"</strong> cm<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombÃ©e")+" : <strong>" + str.setNum(dna_retombeeChevron*100,'f',1)+"</strong> cm<br />";
     resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon de courbure de l'intrados")+" : <strong>" +str.setNum(chev[num].rayonIntrados,'f',2)+"</strong> m<br />";
     resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon de courbure de l'extrados")+" : <strong>"+str.setNum(chev[num].rayonExtrados,'f',2)+"</strong> m<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de traçage alpha côté gauche AB")+" : <strong>"+str.setNum(degres(chev[num].angleTracageCoteAB),'f',1)+"</strong> °<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de traçage alpha côté droit CD")+" : <strong>"+str.setNum(degres(chev[num].angleTracageCoteCD),'f',1)+"</strong> °<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de coupe alpha côté gauche AB")+" : <strong>"+str.setNum(degres(chev[num].angleCoupeCoteAB),'f',1)+"</strong> °<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de coupe alpha côté droit CD")+" : <strong>"+str.setNum(degres(chev[num].angleCoupeCoteCD),'f',1)+"</strong> °</p>";
-    resu += "<p>"+QObject::tr("Les points notés V sont sur la face supérieure de la planche, les points notés W sont sur la face cachée de la planche")+".<br />";
-    resu += QObject::tr("Le point B est pris comme origine du repère. Le schéma ci-dessous n\'est pas représentatif du chevron, il sert juste à comprendre les notations")+".</p>";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de traÃ§age alpha cÃ´tÃ© gauche AB")+" : <strong>"+str.setNum(degres(chev[num].angleTracageCoteAB),'f',1)+"</strong> Â°<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de traÃ§age alpha cÃ´tÃ© droit CD")+" : <strong>"+str.setNum(degres(chev[num].angleTracageCoteCD),'f',1)+"</strong> Â°<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de coupe alpha cÃ´tÃ© gauche AB")+" : <strong>"+str.setNum(degres(chev[num].angleCoupeCoteAB),'f',1)+"</strong> Â°<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle de coupe alpha cÃ´tÃ© droit CD")+" : <strong>"+str.setNum(degres(chev[num].angleCoupeCoteCD),'f',1)+"</strong> Â°</p>";
+    resu += "<p>"+QObject::tr("Les points notÃ©s V sont sur la face supÃ©rieure de la planche, les points notÃ©s W sont sur la face cachÃ©e de la planche")+".<br />";
+    resu += QObject::tr("Le point B est pris comme origine du repÃ¨re. Le schÃ©ma ci-dessous n\'est pas reprÃ©sentatif du chevron, il sert juste Ã  comprendre les notations")+".</p>";
     return resu;
 }
 
@@ -84,56 +84,56 @@ QString domenidabeille::explicationGenerale()
 {
     QString str,str2,str3,resu,cha;
 
-    resu = "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A) "+QObject::tr("Généralités")+"</strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La charpente en nid d\'abeille, évolution des charpentes de Philibert de l\'Orme (1510-1570), permet comme ces dernières d\'utiliser des bois de faible section, comme des planches de 30 ou 40 mm d\'épaisseur et de longueur courte (environ 2 m 30 maximum)")+".</p>";
+    resu = "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A) "+QObject::tr("GÃ©nÃ©ralitÃ©s")+"</strong></span></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La charpente en nid d\'abeille, Ã©volution des charpentes de Philibert de l\'Orme (1510-1570), permet comme ces derniÃ¨res d\'utiliser des bois de faible section, comme des planches de 30 ou 40 mm d\'Ã©paisseur et de longueur courte (environ 2 m 30 maximum)")+".</p>";
     resu += "<p><br /></p>";
-    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B) "+QObject::tr("Rappel des paramètres constructifs importants")+"</strong></span></p>";
+    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B) "+QObject::tr("Rappel des paramÃ¨tres constructifs importants")+"</strong></span></p>";
     if(dna_choix==0)
-        cha = QObject::tr("sphérique");
+        cha = QObject::tr("sphÃ©rique");
     else
-        cha = QObject::tr("non sphérique");
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("type de dôme")+" : <strong>"+cha+"</strong></p>";
+        cha = QObject::tr("non sphÃ©rique");
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("type de dÃ´me")+" : <strong>"+cha+"</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("hauteur")+" : <strong>"+str.setNum(dna_hauteur,'f',2)+" m</strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamètre au sol (extérieur sablière)")+" : <strong>"+str.setNum(dna_diametreSol,'f',2)+" m</strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamètre extérieur tonoo")+" : <strong>"+str.setNum(dna_diametreTonoo,'f',2)+" m</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamÃ¨tre au sol (extÃ©rieur sabliÃ¨re)")+" : <strong>"+str.setNum(dna_diametreSol,'f',2)+" m</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamÃ¨tre extÃ©rieur tonoo")+" : <strong>"+str.setNum(dna_diametreTonoo,'f',2)+" m</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon de courbure")+" : <strong>"+str.setNum(dna_rayonCourbureDome,'f',2)+" m</strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("nombre de losanges par rangée")+" : <strong>"+str.setNum(dna_NbreLosangesHorizontal)+"</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("nombre de losanges par rangÃ©e")+" : <strong>"+str.setNum(dna_NbreLosangesHorizontal)+"</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon de courbure")+" : <strong>"+str.setNum(dna_rayonCourbureDome,'f',2)+" m</strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diagonale verticale des losanges de la rangée la plus proche du tonoo")+" : <strong>"+str.setNum(dna_premiereDiagonaleHorizontaleLosangeHaut*100.0,'f',1)+" cm</strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("décalage du noeud")+" : <strong>"+str.setNum(dna_decalageNoeud*100.0,'f',1)+" cm</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diagonale verticale des losanges de la rangÃ©e la plus proche du tonoo")+" : <strong>"+str.setNum(dna_premiereDiagonaleHorizontaleLosangeHaut*100.0,'f',1)+" cm</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("dÃ©calage du noeud")+" : <strong>"+str.setNum(dna_decalageNoeud*100.0,'f',1)+" cm</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("distance du premier neoud par rapport au tonoo")+" : <strong>"+str.setNum(dna_DistanceNoeudTonoo*100.0,'f',1)+" cm</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("volume")+" : <strong>"+str.setNum(volume(),'f',1)+" m3</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("surface au sol")+" : <strong>"+str.setNum(surfaceAuSol(),'f',1)+" m2</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("surface de toit")+" : <strong>"+str.setNum(surfaceDeToit(),'f',1)+" m2</strong></p>";
     resu += "<p><br /></p>";
     resu += "<p><span style=\"color: #ff9900;\"><strong><span style=\"font-size: 12pt;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C) "+QObject::tr("Les chevrons")+"</span></strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Précisons tout d\'abord que nous allons partir de planches rectangulaires et tailler ensuite la forme courbe de chaque chevron")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Il est possible de ne tailler que l\'extrados du chevron courbe, en gardant l\'intrados rectiligne, cela permet, pour une même largeur de planches de départ, une meilleure solidité, mais néanmoins une esthétique différente (voute moins lisse de l\'intérieur) par rapport à des chevrons dont l\'intrados est courbe")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Il y a 2 types de chevrons, les chevrons penchés à droite (quand on regarde le dôme de l\'extérieur, leur bas est à gauche et le haut va vers la droite) et les chevrons penchés à gauche")+".</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La méthode proposée pour tailler les chevrons est la suivante, à répéter pour chaque type")+" :</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>I</strong> - "+QObject::tr("marquer un chevron \"gabarit\" sur une planche, tracer le dessin d\'un chevron en marquant bien ses points les plus loins de son centre (soit W, soit V, ça dépend). Pour dessiner la bonne courbe, on pourra s\'aider des points O et O2, ainsi que du centre Ce qui correspond au centre des cercles de l\'intrados et de l\'extrados. Ne pas oublier de marquer les points s1, s2, q1, q2 sur la face V du chevron et les m1, m2, n1, n2 sur la face W du chevron. Ils correspondent respectivement à l\'arrivée du chevron de la rangée précédente et au départ du chevron de la rangée supérieure")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("PrÃ©cisons tout d\'abord que nous allons partir de planches rectangulaires et tailler ensuite la forme courbe de chaque chevron")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Il est possible de ne tailler que l\'extrados du chevron courbe, en gardant l\'intrados rectiligne, cela permet, pour une mÃªme largeur de planches de dÃ©part, une meilleure soliditÃ©, mais nÃ©anmoins une esthÃ©tique diffÃ©rente (voute moins lisse de l\'intÃ©rieur) par rapport Ã  des chevrons dont l\'intrados est courbe")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Il y a 2 types de chevrons, les chevrons penchÃ©s Ã  droite (quand on regarde le dÃ´me de l\'extÃ©rieur, leur bas est Ã  gauche et le haut va vers la droite) et les chevrons penchÃ©s Ã  gauche")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La mÃ©thode proposÃ©e pour tailler les chevrons est la suivante, Ã  rÃ©pÃ©ter pour chaque type")+" :</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>I</strong> - "+QObject::tr("marquer un chevron \"gabarit\" sur une planche, tracer le dessin d\'un chevron en marquant bien ses points les plus loins de son centre (soit W, soit V, Ã§a dÃ©pend). Pour dessiner la bonne courbe, on pourra s\'aider des points O et O2, ainsi que du centre Ce qui correspond au centre des cercles de l\'intrados et de l\'extrados. Ne pas oublier de marquer les points s1, s2, q1, q2 sur la face V du chevron et les m1, m2, n1, n2 sur la face W du chevron. Ils correspondent respectivement Ã  l\'arrivÃ©e du chevron de la rangÃ©e prÃ©cÃ©dente et au dÃ©part du chevron de la rangÃ©e supÃ©rieure")+".</p>";
     resu += "<p align=center><img height=\"177\" width=\"400\" src=\":/images/vna/vnaAngleTracage\" /></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>II</strong> - "+QObject::tr("découper l\'extrados courbe (et l\'intrados si voulu) à la scie sauteuse ou à la scie à ruban. Ne coupez pas encore les 2 bouts en biseaux mais coupez sur les lignes les plus extérieures, avec un angle de scie normal (0°), pour obtenir des coupes bien perpendiculaires à la face du dessus du chevron")+".</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>III</strong> - "+QObject::tr("a partir de ce chevron \"gabarit\", vous pouvez découper tous les autres chevrons du même type. Une technique, la défonceuse avec une mèche \"à copier\" qui va suivre le gabarit en découpant celui du dessus. Une autre technique, plus dangereuse, utiliser une toupie")+".</p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>IV</strong> - "+QObject::tr("une fois tous les chevrons d'un même type découpés, vous pouvez biseauter les bouts. Pour cela, vous pouvez utiliser une scie à onglets à inclinaison variable, ou une scie circulaire avec l\'angle de la lame réglable")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>II</strong> - "+QObject::tr("dÃ©couper l\'extrados courbe (et l\'intrados si voulu) Ã  la scie sauteuse ou Ã  la scie Ã  ruban. Ne coupez pas encore les 2 bouts en biseaux mais coupez sur les lignes les plus extÃ©rieures, avec un angle de scie normal (0Â°), pour obtenir des coupes bien perpendiculaires Ã  la face du dessus du chevron")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>III</strong> - "+QObject::tr("a partir de ce chevron \"gabarit\", vous pouvez dÃ©couper tous les autres chevrons du mÃªme type. Une technique, la dÃ©fonceuse avec une mÃ¨che \"Ã  copier\" qui va suivre le gabarit en dÃ©coupant celui du dessus. Une autre technique, plus dangereuse, utiliser une toupie")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>IV</strong> - "+QObject::tr("une fois tous les chevrons d'un mÃªme type dÃ©coupÃ©s, vous pouvez biseauter les bouts. Pour cela, vous pouvez utiliser une scie Ã  onglets Ã  inclinaison variable, ou une scie circulaire avec l\'angle de la lame rÃ©glable")+".</p>";
     resu += "<p align=center><img height=\"162\" width=\"400\" src=\":/images/vna/vnaAngleCoupe\" /></p>";
     resu += "<p><br /></p>";
-    resu += "<p><span style=\"font-size: 12pt;\"><strong><span style=\"color: #ff9900;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D) "+QObject::tr("La sablière")+"</span></strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La sablière est un assemblage de pièces fixées sur une assise plane et stable. Le rayon extérieur de la sablière est de")+" <strong> "+str.setNum(dna_diametreSol/2.0,'f',2)+" </strong> m, "+QObject::tr("le rayon intérieur est de")+" <strong> "+str2.setNum(dna_diametreInterieurSabliere/2.0,'f',2)+" </strong> m. "+QObject::tr("Les premiers chevrons viennent s\'y fixer à intervalles réguliers de")+" <strong> "+str3.setNum(dna_diametreSol*qSin(pi/dna_NbreLosangesHorizontal)*100.0,'f',1)+" </strong> cm.</p>";
+    resu += "<p><span style=\"font-size: 12pt;\"><strong><span style=\"color: #ff9900;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D) "+QObject::tr("La sabliÃ¨re")+"</span></strong></span></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La sabliÃ¨re est un assemblage de piÃ¨ces fixÃ©es sur une assise plane et stable. Le rayon extÃ©rieur de la sabliÃ¨re est de")+" <strong> "+str.setNum(dna_diametreSol/2.0,'f',2)+" </strong> m, "+QObject::tr("le rayon intÃ©rieur est de")+" <strong> "+str2.setNum(dna_diametreInterieurSabliere/2.0,'f',2)+" </strong> m. "+QObject::tr("Les premiers chevrons viennent s\'y fixer Ã  intervalles rÃ©guliers de")+" <strong> "+str3.setNum(dna_diametreSol*qSin(pi/dna_NbreLosangesHorizontal)*100.0,'f',1)+" </strong> cm.</p>";
     resu += "<p align=center><img height=\"273\" width=\"250\" src=\":/images/dna/dnaSabliere\" /></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Afin de bloquer le mouvement des assemblages au niveau des sablières, on pourra rajouter de cales")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Afin de bloquer le mouvement des assemblages au niveau des sabliÃ¨res, on pourra rajouter de cales")+".</p>";
     resu += "<p align=center><img height=\"141\" width=\"250\" src=\":/images/vna/vnaFixationSabliere\" /></p>";
     resu += "<p><br /></p>";
     resu += "<p><strong><span style=\"font-size: 12pt; color: #ff9900;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E) "+QObject::tr("Le Tonoo")+"</span></strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le Tonoo pourra être obtenu en faisant un assemblage lamellé-collé (ou vissé) en assemblant plusieurs rangées de planches jusqu\'à obtenir l\'épaisseur voulue. Les planches seront vissées ou clouées entre elles et les jonctions de chaque rangées seront décalées avec les rangées suivantes")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Les chevrons finaux y arrivent avec un intervalle régulier de")+" <strong> "+str.setNum(dna_diametreSol*qSin(pi/dna_NbreLosangesHorizontal)*100.0,'f',1)+" </strong> cm.</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le Tonoo pourra Ãªtre obtenu en faisant un assemblage lamellÃ©-collÃ© (ou vissÃ©) en assemblant plusieurs rangÃ©es de planches jusqu\'Ã  obtenir l\'Ã©paisseur voulue. Les planches seront vissÃ©es ou clouÃ©es entre elles et les jonctions de chaque rangÃ©es seront dÃ©calÃ©es avec les rangÃ©es suivantes")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Les chevrons finaux y arrivent avec un intervalle rÃ©gulier de")+" <strong> "+str.setNum(dna_diametreSol*qSin(pi/dna_NbreLosangesHorizontal)*100.0,'f',1)+" </strong> cm.</p>";
     resu += "<p><br /></p>";
     resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F) "+QObject::tr("Fixations des noeuds")+"</strong></span></p>";
     resu += "<p align=center><img height=\"223\" width=\"199\" src=\":/images/vna/vnaAssemblage\" /></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("L\'assemblage ne se fait pas au milieu des chevrons, il faut respecter une valeur de décalage du noeud. Sinon, le noeud pourrait pivoter, le décalage assurant la rigidité de la structure")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Les chevrons seront premièrement cloués ou vissés en bout au niveau des assemblages. Ensuite, si la structure est soumise à de fortes contraintes, il sera nécessaire de solidifier par un boulonnage: tige filetée, écroux, et rondelles crantées si possibles")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("L\'assemblage ne se fait pas au milieu des chevrons, il faut respecter une valeur de dÃ©calage du noeud. Sinon, le noeud pourrait pivoter, le dÃ©calage assurant la rigiditÃ© de la structure")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Les chevrons seront premiÃ¨rement clouÃ©s ou vissÃ©s en bout au niveau des assemblages. Ensuite, si la structure est soumise Ã  de fortes contraintes, il sera nÃ©cessaire de solidifier par un boulonnage: tige filetÃ©e, Ã©croux, et rondelles crantÃ©es si possibles")+".</p>";
     resu += "<p><br /></p>";
     resu += "<p><span style=\"font-size: 12pt;\"><strong><span style=\"color: #ff9900;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G) "+QObject::tr("Montage structure")+"</span></strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le montage débute par la mise en place du rond de sablière. Ensuite il suffit de monter rangées par rangées jusqu\'à pouvoir s\'approcher du tonoo, normalement, grace à la forme circulaire, ça tient pendant le montage")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le montage dÃ©bute par la mise en place du rond de sabliÃ¨re. Ensuite il suffit de monter rangÃ©es par rangÃ©es jusqu\'Ã  pouvoir s\'approcher du tonoo, normalement, grace Ã  la forme circulaire, Ã§a tient pendant le montage")+".</p>";
     resu += "<p><br /></p>";
     resu += "<p><span style=\"font-size: 12pt;\"><strong><span style=\"color: #ff9900;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H) "+QObject::tr("Couverture, Ouvertures")+"</span></strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour couvrir ce genre de structure, on peut voliger directement sur les chevrons ou poser un liteaunage horizontal. Les matériaux de couvertures pourront être la tuile, le bardeau de bois, l\'ardoise ...")+"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si l\'on désire effectuer une ouverture style velux, on prendra soin de consolider la structure au niveau du chevêtre")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si une porte de grandes dimensions doit être effectuée (style hangar), on reprendra le poids de la charpente par un linteau et deux poteaux descendant au sol")+".</p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour couvrir ce genre de structure, on peut voliger directement sur les chevrons ou poser un liteaunage horizontal. Les matÃ©riaux de couvertures pourront Ãªtre la tuile, le bardeau de bois, l\'ardoise ...")+"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si l\'on dÃ©sire effectuer une ouverture style velux, on prendra soin de consolider la structure au niveau du chevÃªtre")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si une porte de grandes dimensions doit Ãªtre effectuÃ©e (style hangar), on reprendra le poids de la charpente par un linteau et deux poteaux descendant au sol")+".</p>";
 
     return resu;
 }
@@ -156,11 +156,11 @@ QString domenidabeille::debit()
         carac.append(QChar(i+65));
 
     resu = "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Chevrons")+"</strong></span></p>";
-    resu += "<p>"+QObject::tr("Il y a en tout")+" <strong>"+str.setNum((double)nb_chevrons_total,'f',0)+"</strong> "+QObject::tr("chevrons, soit")+" <strong>"+str2.setNum((double)chev.size(),'f',0)+"</strong> "+QObject::tr("rangées de")+" <strong>"+str3.setNum((double)dna_NbreLosangesHorizontal,'f',0)+"</strong> "+QObject::tr("chevrons chacune")+".<br />";
+    resu += "<p>"+QObject::tr("Il y a en tout")+" <strong>"+str.setNum((double)nb_chevrons_total,'f',0)+"</strong> "+QObject::tr("chevrons, soit")+" <strong>"+str2.setNum((double)chev.size(),'f',0)+"</strong> "+QObject::tr("rangÃ©es de")+" <strong>"+str3.setNum((double)dna_NbreLosangesHorizontal,'f',0)+"</strong> "+QObject::tr("chevrons chacune")+".<br />";
     resu += ""+QObject::tr("Les planches pour tailler tous ces chevrons auront les dimensions suivantes (par type de chevron)")+" :<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Toutes la même epaisseur")+" : <strong>"+str.setNum(dna_epaisseurChevron*100.0,'f',0)+"</strong> cm<br /></p>";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Toutes la mÃªme epaisseur")+" : <strong>"+str.setNum(dna_epaisseurChevron*100.0,'f',0)+"</strong> cm<br /></p>";
     resu += "<table cellpadding=\"2\" border=\"1\" align=\"center\"><tbody><tr>";
-    resu += "<td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Type")+"</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Retombée")+" (cm)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Longueur")+" (cm)</strong></p></td bgcolor=\"#cccc99\"><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Débit total")+" (m3)</strong></p></td></tr>";
+    resu += "<td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Type")+"</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("RetombÃ©e")+" (cm)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Longueur")+" (cm)</strong></p></td bgcolor=\"#cccc99\"><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("DÃ©bit total")+" (m3)</strong></p></td></tr>";
     for(int i=0;i<chev.size();i++)
     {
         m_debi = dna_epaisseurChevron*chev[i].retombeePlanche*chev[i].longueurPlanche*dna_NbreLosangesHorizontal;
@@ -168,27 +168,27 @@ QString domenidabeille::debit()
         resu += "<tr><td bgcolor=\"#cccc99\"><strong>"+carac[i]+"</strong></td><td>"+str.setNum(chev[i].retombeePlanche*100.0,'f',1)+"</td><td>"+str2.setNum(chev[i].longueurPlanche*100.0,'f',1)+"</td><td>"+str3.setNum(m_debi,'f',2)+"</td></tr>";
     }
     resu += "</tbody></table>";
-    resu += "<p>"+QObject::tr("Ce qui nous donne un débit total pour tous les chevrons de")+" <strong>"+str.setNum(m_debitChevrons,'f',2)+"</strong> m3.</p>";
+    resu += "<p>"+QObject::tr("Ce qui nous donne un dÃ©bit total pour tous les chevrons de")+" <strong>"+str.setNum(m_debitChevrons,'f',2)+"</strong> m3.</p>";
     resu += "<p></p>";
-    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Sablière")+"</strong></span></p>";
-    resu += "<p>"+QObject::tr("La sablière a pour dimensions")+" : <br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("épaisseur")+" : <strong>"+str.setNum(dna_epaisseurSabliere*100.0,'f',0)+"</strong> cm<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon extérieur")+" : <strong>"+str.setNum(dna_diametreSol/2.0,'f',2)+"</strong> m<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon intérieur")+" : <strong>"+str.setNum(dna_diametreInterieurSabliere/2.0,'f',2)+"</strong> m</p>";
+    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("SabliÃ¨re")+"</strong></span></p>";
+    resu += "<p>"+QObject::tr("La sabliÃ¨re a pour dimensions")+" : <br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Ã©paisseur")+" : <strong>"+str.setNum(dna_epaisseurSabliere*100.0,'f',0)+"</strong> cm<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon extÃ©rieur")+" : <strong>"+str.setNum(dna_diametreSol/2.0,'f',2)+"</strong> m<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rayon intÃ©rieur")+" : <strong>"+str.setNum(dna_diametreInterieurSabliere/2.0,'f',2)+"</strong> m</p>";
     m_debitSabliere = pi*(qPow(dna_diametreSol/2.0,2.0)-qPow(dna_diametreInterieurSabliere/2.0,2.0))*dna_epaisseurSabliere;
-    resu += "<p>"+QObject::tr("Ce qui nous donne un débit exact pour la sablière de")+" <strong>"+str.setNum(m_debitSabliere,'f',2)+"</strong> m3.</p>";
+    resu += "<p>"+QObject::tr("Ce qui nous donne un dÃ©bit exact pour la sabliÃ¨re de")+" <strong>"+str.setNum(m_debitSabliere,'f',2)+"</strong> m3.</p>";
     resu += "<p></p>";
     resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Tonoo")+"</strong></span></p>";
     resu += "<p>"+QObject::tr("Le Tonoo a les dimensions suivantes")+" : <br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("épaisseur")+" : <strong>"+str.setNum(dna_retombeeTonoo*100.0,'f',0)+"</strong> cm<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamètre extérieur")+" : <strong>"+str.setNum(dna_diametreTonoo/2.0,'f',2)+"</strong> m<br />";
-    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamètre intérieur")+" : <strong>"+str.setNum(dna_diametreTonoo/2.0-dna_epaisseurTonoo,'f',2)+"</strong> m</p>";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Ã©paisseur")+" : <strong>"+str.setNum(dna_retombeeTonoo*100.0,'f',0)+"</strong> cm<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamÃ¨tre extÃ©rieur")+" : <strong>"+str.setNum(dna_diametreTonoo/2.0,'f',2)+"</strong> m<br />";
+    resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("diamÃ¨tre intÃ©rieur")+" : <strong>"+str.setNum(dna_diametreTonoo/2.0-dna_epaisseurTonoo,'f',2)+"</strong> m</p>";
     m_debitTonoo = dna_retombeeTonoo*pi*(qPow(dna_diametreTonoo/2.0,2.0)-qPow(dna_diametreTonoo/2.0-dna_epaisseurTonoo,2.0));
-    resu += "<p>"+QObject::tr("Ce qui nous donne un débit exact pour le tonoo de")+" <strong>"+str.setNum(m_debitTonoo,'f',2)+"</strong> m3.</p>";
+    resu += "<p>"+QObject::tr("Ce qui nous donne un dÃ©bit exact pour le tonoo de")+" <strong>"+str.setNum(m_debitTonoo,'f',2)+"</strong> m3.</p>";
     resu += "<p></p>";
-    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Débit Total")+"</strong></span></p>";
+    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("DÃ©bit Total")+"</strong></span></p>";
     m_debitTotal = m_debitChevrons+m_debitSabliere+m_debitTonoo;
-    resu += "<p>"+QObject::tr("Soit un débit exact total de bois pour toute la charpente de")+" <strong>"+str.setNum(m_debitTotal,'f',2)+"</strong> m3.</p>";
+    resu += "<p>"+QObject::tr("Soit un dÃ©bit exact total de bois pour toute la charpente de")+" <strong>"+str.setNum(m_debitTotal,'f',2)+"</strong> m3.</p>";
 
     return resu;
 }

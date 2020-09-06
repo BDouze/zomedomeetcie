@@ -2,12 +2,20 @@
 #include "ui_fenprincipale.h"
 #include "glwidget.h"
 
-#include <QtGui>
+//#include <QtGui>
+#include <QtWidgets>
 #include <QtXml>
 #include <QPixmap>
 #include <QLabel>
 #include <QGridLayout>
 #include <QApplication>
+#include <QDesktopWidget>
+#include <QMessageBox>
+#include <QString>
+#include <QFileDialog>
+#include <QPrinter>
+// a remplacer sous certaines compilations par
+// #include <QtPrintSupport/QPrinter>
 
 #include <QVector3D>
 #include "mathema.h"
@@ -39,7 +47,7 @@ fenPrincipale::fenPrincipale(QWidget *parent) :
     heliY->setParametres(fenPrincipale::ui->hlyDiametreYourte->value(),fenPrincipale::ui->hlyHauteurMur->value(),fenPrincipale::ui->hlyNombrePans->value(),fenPrincipale::ui->hlyPenteToit->value(),fenPrincipale::ui->hlyEpaisseurPerche->value(),fenPrincipale::ui->hlyRetombeePerches->value(),fenPrincipale::ui->hlyPercheDepassementHaut->value(),fenPrincipale::ui->hlyRetombeeTonoo->value(),fenPrincipale::ui->hlyRetombeeTraverse->value(),fenPrincipale::ui->hlyEpaisseurCroix->value(),fenPrincipale::ui->hlyRetombeeCroix->value());
 
     toileY = new ToileYourte();
-    toileY->setParametres(fenPrincipale::ui->hlyHauteurMur->value(),fenPrincipale::ui->hlyPenteToit->value(),fenPrincipale::ui->hlyDiametreYourte->value(),heliY->hel_diametreTonoo,fenPrincipale::ui->hlyToileLargeurLaize->value(),fenPrincipale::ui->hlyToileOrientation->value(),fenPrincipale::ui->hlyToileDecalage->value());
+    toileY->setParametres(fenPrincipale::ui->hlyHauteurMur->value(),fenPrincipale::ui->hlyPenteToit->value(),fenPrincipale::ui->hlyDiametreYourte->value(),heliY->hel_diametreTonoo,fenPrincipale::ui->hlyToileLargeurLaize->value(),fenPrincipale::ui->hlyToileOrientation->value(),fenPrincipale::ui->hlyToileDecalage->value(),fenPrincipale::ui->hlyTypeCouture->currentIndex(),fenPrincipale::ui->hlyLargeurCouture->value());
 
     //on declare notre objet de calcul pour le geodome
     geode = new geodome();
@@ -141,14 +149,14 @@ void fenPrincipale::designFenetreAPropos()
     texteApropos->setOpenExternalLinks(true);
     texteApropos->setAcceptRichText(true);
     QString texteHTMLApropos;
-    texteHTMLApropos = "<html><p align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Ce programme open-source")+" <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/fr/\"><img height=\"31\" width=\"88\" src=\":/images/licenseCC\" /></a> "+QObject::tr("est développé par")+"<strong> "+QObject::tr("l\'association")+" <a href=\"http://ardheia.free.fr\">"+QObject::tr("ARDHEIA")+"</a></strong>.</p>";
+    texteHTMLApropos = "<html><p align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Ce programme open-source")+" <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/fr/\"><img height=\"31\" width=\"88\" src=\":/images/licenseCC\" /></a> "+QObject::tr("est dÃ©veloppÃ© par")+"<strong> "+QObject::tr("l\'association")+" <a href=\"http://www.ardheia.fr\">"+QObject::tr("ARDHEIA")+"</a></strong>.</p>";
     texteHTMLApropos += "<p align=center><img src=\":/images/logoArdheia\" /></p>";
-    texteHTMLApropos += "<p align=justify>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il est toujours en cours de développement, l'idée étant de réunir toutes nos anciens tableurs (dome,zome ...) en un programme plus convivial et fiable. Pour l'instant, vous pouvez visualiser les voutes,les dômes en nid d'abeille, les zomes, les héliyourtes (et la toile), les géodomes")+". <em><strong>"+QObject::tr("A venir")+" :</strong></em> "+QObject::tr("Dôme Pomme de pin ...")+"</p>";
-    texteHTMLApropos += "<p align=justify>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il est désormais possible d\'exporter n\'importe quelle vue 3D au format Wavefront Obj, pour l\'ouvrir avec un autre logiciel de 3D (Blender, Sketchup ...). Ceci peut être intéressant pour situer les structures dans des environnements ou pour prendre des côtes facilement")+".</p>";
-    texteHTMLApropos += "<p align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il est développé en C++ avec")+" <strong><a href=\"http://qt.nokia.com/title-fr/\">Qt</a>. </strong>"+QObject::tr("Les sources peuvent bien entendu être copiées, modifiées, diffusées à condition de citer la source")+" ...</p>";
-    texteHTMLApropos += "<p align=justify>&nbsp;&nbsp;"+QObject::tr("Ce programme sert uniquement à visualiser en 3D les structures imaginées et à vous donner des infos concernant la construction. Il ne garantit en aucun cas la résistance mécanique des ouvrages et l'association ARDHEIA ne pourra donc pas être tenue responsable d'un mauvais dimensionnement d'une structure")+".</p>";
+    texteHTMLApropos += "<p align=justify>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il est toujours en cours de dÃ©veloppement, l'idÃ©e Ã©tant de rÃ©unir toutes nos anciens tableurs (dome,zome ...) en un programme plus convivial et fiable. Pour l'instant, vous pouvez visualiser les voutes,les dÃ´mes en nid d'abeille, les zomes, les hÃ©liyourtes (et la toile), les gÃ©odomes")+". <em><strong>"+QObject::tr("A venir")+" :</strong></em> "+QObject::tr("DÃ´me Pomme de pin ...")+"</p>";
+    texteHTMLApropos += "<p align=justify>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il est dÃ©sormais possible d\'exporter n\'importe quelle vue 3D au format Wavefront Obj, pour l\'ouvrir avec un autre logiciel de 3D (Blender, Sketchup ...). Ceci peut Ãªtre intÃ©ressant pour situer les structures dans des environnements ou pour prendre des cÃ´tes facilement")+".</p>";
+    texteHTMLApropos += "<p align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il est dÃ©veloppÃ© en C++ avec")+" <strong><a href=\"http://qt.nokia.com/title-fr/\">Qt</a>. </strong>"+QObject::tr("Les sources peuvent bien entendu Ãªtre copiÃ©es, modifiÃ©es, diffusÃ©es Ã  condition de citer la source")+" ...</p>";
+    texteHTMLApropos += "<p align=justify>&nbsp;&nbsp;"+QObject::tr("Ce programme sert uniquement Ã  visualiser en 3D les structures imaginÃ©es et Ã  vous donner des infos concernant la construction. Il ne garantit en aucun cas la rÃ©sistance mÃ©canique des ouvrages et l'association ARDHEIA ne pourra donc pas Ãªtre tenue responsable d'un mauvais dimensionnement d'une structure")+".</p>";
     texteHTMLApropos += "<p align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour toutes questions et remarques (il y a encore pas mal de bugs), vous pouvez nous contacter a l'adresse")+" <strong><a href=\"mailto:ardheia@gmail.com\">ardheia@gmail.com</a></strong></p>";
-    texteHTMLApropos += "<p align=center><em>"+QObject::tr("Vous avez actuellement la version")+" "+version()+" "+QObject::tr("(année.mois.jour)")+"</em></p></html>";
+    texteHTMLApropos += "<p align=center><em>"+QObject::tr("Vous avez actuellement la version")+" "+version()+" "+QObject::tr("(annÃ©e.mois.jour)")+"</em></p></html>";
     texteApropos->setText(texteHTMLApropos);
     //le bouton ok
     QPushButton *okapropos = new QPushButton(QObject::tr("Et Hop !"));
@@ -193,8 +201,8 @@ void fenPrincipale::rafraichirResultatsVouteNidAbeille()
 
     //page chevron
     fenPrincipale::ui->vnaDonneesGeneralesATousChevronsTexte->setText(vouteNA->explicationChevrons());
-    fenPrincipale::ui->vna_nombreChevronsGaucheText->setTitle(str.setNum((double)vouteNA->nbreChevronsGauche(),'f',0)+" "+QObject::tr("chevrons penchés à gauche"));
-    fenPrincipale::ui->vna_nombreChevronsDroiteText->setTitle(str.setNum((double)vouteNA->nbreChevronsGauche(),'f',0)+" "+QObject::tr("chevrons penchés à droite"));
+    fenPrincipale::ui->vna_nombreChevronsGaucheText->setTitle(str.setNum((double)vouteNA->nbreChevronsGauche(),'f',0)+" "+QObject::tr("chevrons penchÃ©s Ã  gauche"));
+    fenPrincipale::ui->vna_nombreChevronsDroiteText->setTitle(str.setNum((double)vouteNA->nbreChevronsGauche(),'f',0)+" "+QObject::tr("chevrons penchÃ©s Ã  droite"));
     fenPrincipale::ui->vnatableChevronDroiteText->setText(vouteNA->tableauChevronDroite());
     fenPrincipale::ui->vnatableChevronGaucheText->setText(vouteNA->tableauChevronGauche());
 
@@ -435,12 +443,12 @@ fenPrincipale::~fenPrincipale()
     delete ui;
 }
 
-void fenPrincipale::on_actionA_propos_activated()
+void fenPrincipale::on_actionA_propos_triggered()
 {
     fenetreAPropos->show();
 }
 
-void fenPrincipale::on_actionCouleurs_distinctes_activated()
+void fenPrincipale::on_actionCouleurs_distinctes_triggered()
 {
     if(fenPrincipale::ui->actionCouleurs_distinctes->isChecked())
     {
@@ -481,7 +489,7 @@ void fenPrincipale::vnaTestBugRayonCourbure()
     dist = qSqrt(qPow(fenPrincipale::ui->vnaPortee->value()/2.0-fenPrincipale::ui->vnaEpaisseurFaitiere->value()/200.0,2.0)+qPow(fenPrincipale::ui->vnaEpaisseurSabliere->value()/100.0-fenPrincipale::ui->vnaHauteurVoute->value(),2.0));
     if(fenPrincipale::ui->vnaRayonCourbureVoute->value()*2.0<dist)
     {
-        QMessageBox::warning(this,QObject::tr("Rayon de courbure trop faible"),QObject::tr("Le rayon de courbure ne peut être inférieur à ")+str.setNum(dist/2.0,'f',1)+" m.");
+        QMessageBox::warning(this,QObject::tr("Rayon de courbure trop faible"),QObject::tr("Le rayon de courbure ne peut Ãªtre infÃ©rieur Ã  ")+str.setNum(dist/2.0,'f',1)+" m.");
         fenPrincipale::ui->vnaRayonCourbureVoute->setValue(dist/2.0+0.05);
     }
 }
@@ -494,7 +502,7 @@ bool fenPrincipale::vnaTestBugRetombeeChevron()
     if(ret>fenPrincipale::ui->vnaRetombeeChevron->value())
     {
         fenPrincipale::ui->vnaRetombeeChevron->setValue(ret+10.0);
-        QMessageBox::warning(this,QObject::tr("Modification de la largeur des planches"),QObject::tr("Afin de pouvoir tailler les chevrons voulus, le programme a automatiquement augmenté la valeur <largeur planche> à")+" "+str.setNum(ret+10.0,'f',1)+" cm "+QObject::tr("dans l'onglet de paramètres <bois>")+".");
+        QMessageBox::warning(this,QObject::tr("Modification de la largeur des planches"),QObject::tr("Afin de pouvoir tailler les chevrons voulus, le programme a automatiquement augmentÃ© la valeur <largeur planche> Ã ")+" "+str.setNum(ret+10.0,'f',1)+" cm "+QObject::tr("dans l'onglet de paramÃ¨tres <bois>")+".");
         return true;
     }
     else
@@ -546,7 +554,7 @@ void fenPrincipale::on_dnaDiametreSol_valueChanged()
 {
     if(fenPrincipale::ui->dnaDiametreSol->value()<=fenPrincipale::ui->dnaDiametreTonoo->value())
     {
-        QMessageBox::warning(this,QObject::tr("A noter")+" :",QObject::tr("Le diamètre au sol ne peut être inférieur au diamètre du tonoo"));
+        QMessageBox::warning(this,QObject::tr("A noter")+" :",QObject::tr("Le diamÃ¨tre au sol ne peut Ãªtre infÃ©rieur au diamÃ¨tre du tonoo"));
         fenPrincipale::ui->dnaDiametreSol->setValue(fenPrincipale::ui->dnaDiametreTonoo->value()+0.5);
     }
     dnaTestBugRayonCourbure();
@@ -557,7 +565,7 @@ void fenPrincipale::on_dnaDiametreTonoo_valueChanged()
 {
     if(fenPrincipale::ui->dnaDiametreSol->value()<=fenPrincipale::ui->dnaDiametreTonoo->value())
     {
-        QMessageBox::warning(this,QObject::tr("A noter")+" :",QObject::tr("Le diamètre au sol ne peut être inférieur au diamètre du tonoo"));
+        QMessageBox::warning(this,QObject::tr("A noter")+" :",QObject::tr("Le diamÃ¨tre au sol ne peut Ãªtre infÃ©rieur au diamÃ¨tre du tonoo"));
         fenPrincipale::ui->dnaDiametreTonoo->setValue(fenPrincipale::ui->dnaDiametreSol->value()-0.5);
     }
     dnaTestBugRayonCourbure();
@@ -623,7 +631,7 @@ void fenPrincipale::dnaTestBugRayonCourbure()
     dist = qSqrt(qPow(fenPrincipale::ui->dnaDiametreSol->value()/2.0-fenPrincipale::ui->dnaDiametreTonoo->value()/2.0,2.0)+qPow(fenPrincipale::ui->dnaEpaisseurSabliere->value()/100.0-fenPrincipale::ui->dnaHauteurDome->value(),2.0));
     if(fenPrincipale::ui->dnaRayonCourbureDome->value()*2.0<dist)
     {
-        QMessageBox::warning(this,QObject::tr("Rayon de courbure trop faible"),QObject::tr("Le rayon de courbure ne peut être inférieur à")+" "+str.setNum(dist/2.0,'f',1)+" m.");
+        QMessageBox::warning(this,QObject::tr("Rayon de courbure trop faible"),QObject::tr("Le rayon de courbure ne peut Ãªtre infÃ©rieur Ã ")+" "+str.setNum(dist/2.0,'f',1)+" m.");
         fenPrincipale::ui->dnaRayonCourbureDome->setValue(dist/2.0+0.05);
     }
 }
@@ -688,7 +696,7 @@ void fenPrincipale::zomeTestBugNbRangees()
     QString str;
     if(fenPrincipale::ui->zomeRangees->value()>fenPrincipale::ui->zomeNombreOrdre->value())
     {
-        QMessageBox::warning(this,QObject::tr("Nombre de rangées trop grandes"),QObject::tr("Le nombre de rangées ne peut être supérieur au nombre d\'ordre, c\'est à dire dans notre cas")+" "+str.setNum((double)fenPrincipale::ui->zomeNombreOrdre->value(),'f',0)+".");
+        QMessageBox::warning(this,QObject::tr("Nombre de rangÃ©es trop grandes"),QObject::tr("Le nombre de rangÃ©es ne peut Ãªtre supÃ©rieur au nombre d\'ordre, c\'est Ã  dire dans notre cas")+" "+str.setNum((double)fenPrincipale::ui->zomeNombreOrdre->value(),'f',0)+".");
         fenPrincipale::ui->zomeRangees->setValue(fenPrincipale::ui->zomeNombreOrdre->value());
     }
 }
@@ -699,7 +707,7 @@ void fenPrincipale::zomeTestBugNombreForme()
     double jj = 1.0/qTan(pi/fenPrincipale::ui->zomeNombreOrdre->value())+0.2;
     if(fenPrincipale::ui->zomeNombreForme->value()<jj)
     {
-        QMessageBox::warning(this,QObject::tr("Nombre de forme trop petit"),QObject::tr("Le nombre de forme, dans notre cas, doit être supérieur à")+" "+str.setNum(jj,'f',2)+".");
+        QMessageBox::warning(this,QObject::tr("Nombre de forme trop petit"),QObject::tr("Le nombre de forme, dans notre cas, doit Ãªtre supÃ©rieur Ã ")+" "+str.setNum(jj,'f',2)+".");
         fenPrincipale::ui->zomeNombreForme->setValue(jj);
     }
 }
@@ -716,7 +724,7 @@ void fenPrincipale::on_zomeChoixMethodeConstructive_currentIndexChanged(int choi
     {
         fenPrincipale::ui->zomeGroupeChevronsMethode1->setEnabled(false);
         fenPrincipale::ui->ongletsZome->setTabText(1,QObject::tr("Rien"));
-        fenPrincipale::ui->zomeselectionLosangeTexte->setText(QObject::tr("Rien d\'intéressant à cette page pour cette méthode de construction, allez à la suivante"));
+        fenPrincipale::ui->zomeselectionLosangeTexte->setText(QObject::tr("Rien d\'intÃ©ressant Ã  cette page pour cette mÃ©thode de construction, allez Ã  la suivante"));
     }
     rafraichirZome();
 }
@@ -893,14 +901,14 @@ void fenPrincipale::heliTestBugBoutPerche()
     QString str;
     if(qTan(thel_angleInclinaisonPerches)*fenPrincipale::ui->hlyPercheDepassementHaut->value()>fenPrincipale::ui->hlyRetombeeTonoo->value())
     {
-        QMessageBox::warning(this,QObject::tr("Dépassement haut de perche trop important"),QObject::tr("Le dépassement horizontal haut de la perche ne peut etre supérieur à")+" "+str.setNum((double)(fenPrincipale::ui->hlyRetombeeTonoo->value()/qTan(thel_angleInclinaisonPerches)),'f',1)+" cm, "+QObject::tr("ou alors il faut augmenter la retombée du tonoo, ou diminuer la pente du toit")+".");
+        QMessageBox::warning(this,QObject::tr("DÃ©passement haut de perche trop important"),QObject::tr("Le dÃ©passement horizontal haut de la perche ne peut etre supÃ©rieur Ã ")+" "+str.setNum((double)(fenPrincipale::ui->hlyRetombeeTonoo->value()/qTan(thel_angleInclinaisonPerches)),'f',1)+" cm, "+QObject::tr("ou alors il faut augmenter la retombÃ©e du tonoo, ou diminuer la pente du toit")+".");
         fenPrincipale::ui->hlyPercheDepassementHaut->setValue((fenPrincipale::ui->hlyRetombeeTonoo->value()/qTan(thel_angleInclinaisonPerches))-0.01);
     }
 
     double rajout = (fenPrincipale::ui->hlyRetombeeTonoo->value()-thel_retombeeMiniPerches*100.0/qCos(thel_angleInclinaisonPerches))/qTan(thel_angleInclinaisonPerches);
     if(fenPrincipale::ui->hlyPercheDepassementHaut->value()<rajout)
     {
-        QMessageBox::warning(this,QObject::tr("Dépassement haut de perche trop faible"),QObject::tr("Le dépassement horizontal haut de la perche ne peut etre inférieur à")+" "+str.setNum((double)(rajout),'f',1)+" cm, "+QObject::tr("ou alors il faut diminuer la retombée du tonoo, ou augmenter la pente du toit")+".");
+        QMessageBox::warning(this,QObject::tr("DÃ©passement haut de perche trop faible"),QObject::tr("Le dÃ©passement horizontal haut de la perche ne peut etre infÃ©rieur Ã ")+" "+str.setNum((double)(rajout),'f',1)+" cm, "+QObject::tr("ou alors il faut diminuer la retombÃ©e du tonoo, ou augmenter la pente du toit")+".");
         fenPrincipale::ui->hlyPercheDepassementHaut->setValue(rajout+0.01);
     }
 }
@@ -916,6 +924,16 @@ void fenPrincipale::on_hlyToileOrientation_valueChanged()
 }
 
 void fenPrincipale::on_hlyToileDecalage_valueChanged()
+{
+    rafraichirResultatsHeliyourteToile();
+}
+
+void fenPrincipale::on_hlyTypeCouture_currentIndexChanged(int choix)
+{
+    rafraichirResultatsHeliyourteToile();
+}
+
+void fenPrincipale::on_hlyLargeurCouture_valueChanged()
 {
     rafraichirResultatsHeliyourteToile();
 }
@@ -948,7 +966,7 @@ void fenPrincipale::rafraichirHeliyourteToileDessinPrincipal()
 
 void fenPrincipale::rafraichirResultatsHeliyourteToile()
 {
-    toileY->setParametres(fenPrincipale::ui->hlyHauteurMur->value(),fenPrincipale::ui->hlyPenteToit->value(),fenPrincipale::ui->hlyDiametreYourte->value(),heliY->hel_diametreTonoo,fenPrincipale::ui->hlyToileLargeurLaize->value(),fenPrincipale::ui->hlyToileOrientation->value(),fenPrincipale::ui->hlyToileDecalage->value());
+    toileY->setParametres(fenPrincipale::ui->hlyHauteurMur->value(),fenPrincipale::ui->hlyPenteToit->value(),fenPrincipale::ui->hlyDiametreYourte->value(),heliY->hel_diametreTonoo,fenPrincipale::ui->hlyToileLargeurLaize->value(),fenPrincipale::ui->hlyToileOrientation->value(),fenPrincipale::ui->hlyToileDecalage->value(),fenPrincipale::ui->hlyTypeCouture->currentIndex(),fenPrincipale::ui->hlyLargeurCouture->value());
 
     fenPrincipale::ui->hlyToileChoixMorceau->clear();
     fenPrincipale::ui->hlyToileChoixMorceau->addItems(toileY->listeMorceaux());
@@ -1079,7 +1097,7 @@ void fenPrincipale::on_geoAffichage_currentIndexChanged(int choix)
 
 //action des menus
 
-void fenPrincipale::on_actionExporter_en_format_Obj_activated()
+void fenPrincipale::on_actionExporter_en_format_Obj_triggered()
 {
     QVector<QString> nom;
     QString sss;
@@ -1180,7 +1198,7 @@ void fenPrincipale::on_actionExporter_en_format_Obj_activated()
 
     if(ouh == 500)
     {
-        QMessageBox::warning(this,QObject::tr("Pas d'export en format Obj 3D possible sur cet onglet"),QObject::tr("Cette fonction sert juste à exporter les objets 3D en format Wavefront Obj"));
+        QMessageBox::warning(this,QObject::tr("Pas d'export en format Obj 3D possible sur cet onglet"),QObject::tr("Cette fonction sert juste Ã  exporter les objets 3D en format Wavefront Obj"));
     }
     else
     {
@@ -1265,7 +1283,7 @@ void fenPrincipale::on_actionExporter_en_format_Obj_activated()
 }
 
 
-void fenPrincipale::on_actionExporter_resultats_PDF_activated()
+void fenPrincipale::on_actionExporter_resultats_PDF_triggered()
 {
     exporterEnPDF();
 }
@@ -1302,7 +1320,7 @@ void fenPrincipale::exporterEnPDF()
 
         // on donne au QTextEdit le code HTML a interpreter
         html = "<p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("Compte-rendu technique d'une Voute avec la technique Nid d'Abeille")+"</strong></span></p>";
-        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document généré automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("développé par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
+        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document gÃ©nÃ©rÃ© automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("dÃ©veloppÃ© par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
         html += "<p align=right><img height=\"91\" width=\"220\" src=\":/images/logoArdheia\" /></p>";
         html += "<p><br /><br /></p><p align=center><img src=\"im1.bmp\" /></p>";
         html += "<p><br /><br /></p><p align=center><span style=\"font-size: 18pt; color: #ff9900;\"><strong>"+QObject::tr("M")+"</strong></span><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("ETHODE DE CONSTRUCTION")+"</strong></span></p>";
@@ -1311,16 +1329,16 @@ void fenPrincipale::exporterEnPDF()
         html += vouteNA->debit();
         html += "<p><br /><br /></p><p align=center><span style=\"font-size: 18pt; color: #ff9900;\"><strong>"+QObject::tr("L")+"</strong></span><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("ES CHEVRONS ENTIERS")+" ...</strong></span></p>";
         html += vouteNA->explicationChevrons();
-        html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+str.setNum((double)vouteNA->nbreChevronsDroite(),'f',0)+" "+QObject::tr("Chevrons penchés à droite")+"</strong></span></p>";
+        html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+str.setNum((double)vouteNA->nbreChevronsDroite(),'f',0)+" "+QObject::tr("Chevrons penchÃ©s Ã  droite")+"</strong></span></p>";
         html += "<p align=center><img height=\"145\" width=\"526\" src=\":/images/vna/vnaDroitdeFace\" /></p>";
         html += vouteNA->tableauChevronDroite();
-        html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+str.setNum((double)vouteNA->nbreChevronsGauche(),'f',0)+" "+QObject::tr("Chevrons penchés à gauche")+"</strong></span></p>";
+        html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+str.setNum((double)vouteNA->nbreChevronsGauche(),'f',0)+" "+QObject::tr("Chevrons penchÃ©s Ã  gauche")+"</strong></span></p>";
         html += "<p align=center><img height=\"145\" width=\"526\" src=\":/images/vna/vnaGauchedeFace\" /></p>";
         html += vouteNA->tableauChevronGauche();
         html += "<p><br /><br /></p><p align=center><span style=\"font-size: 14pt; color: #000000;\"><strong>... </strong></span><span style=\"font-size: 18pt; color: #ff9900;\"><strong>"+QObject::tr("E")+"</strong></span><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("T LES CHEVRONS TRONQUES")+"</strong></span></p>";
         for(int i=0;i<vouteNA->nbreChevronsTronques();i++)
         {
-            html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("Chevrons tronqués de Type")+" ";
+            html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("Chevrons tronquÃ©s de Type")+" ";
             html+= (char)(i+65);
             html += " :</strong></span></p>";
             switch(vouteNA->orientationChevronTronque(i))
@@ -1388,8 +1406,8 @@ void fenPrincipale::exporterEnPDF()
         printer.setOutputFileName(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer un fichier"), QObject::tr("DomeNidAbeille")+".pdf", QObject::tr("Document")+" Pdf (*.pdf)"));
 
         // on donne au QTextEdit le code HTML a interpreter
-        html = "<p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("Compte-rendu technique d'un Dôme avec la technique Nid d'Abeille")+"</strong></span></p>";
-        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document généré automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("développé par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
+        html = "<p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("Compte-rendu technique d'un DÃ´me avec la technique Nid d'Abeille")+"</strong></span></p>";
+        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document gÃ©nÃ©rÃ© automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("dÃ©veloppÃ© par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
         html += "<p align=right><img height=\"91\" width=\"220\" src=\":/images/logoArdheia\" /></p>";
         html += "<p><br /><br /></p><p align=center><img src=\"im1.bmp\" /></p>";
         html += "<p><br /><br /></p><p align=center><span style=\"font-size: 18pt; color: #ff9900;\"><strong>"+QObject::tr("M")+"</strong></span><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("ETHODE DE CONSTRUCTION")+"</strong></span></p>";
@@ -1437,7 +1455,7 @@ void fenPrincipale::exporterEnPDF()
 
         // on donne au QTextEdit le code HTML a interpreter
         html = "<p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("Compte-rendu technique d'un Zome")+"</strong></span></p>";
-        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document généré automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("développé par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
+        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document gÃ©nÃ©rÃ© automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("dÃ©veloppÃ© par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
         html += "<p align=right><img height=\"91\" width=\"220\" src=\":/images/logoArdheia\" /></p>";
         html += "<p><br /><br /></p><p align=center><img src=\"im1.bmp\" /></p>";
         html += "<p><br /><br /></p><p align=center><span style=\"font-size: 18pt; color: #ff9900;\"><strong>"+QObject::tr("M")+"</strong></span><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("ETHODE DE CONSTRUCTION")+"</strong></span></p>";
@@ -1450,7 +1468,7 @@ void fenPrincipale::exporterEnPDF()
             html += "<p align=center><img height=\"317\" width=\"357\" src=\":/images/zome/zomLosange\" /></p>";
             for(int i=0;i<zomito->listeLosanges().size();i++)
             {
-                html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("Rangée")+" n° "+str.setNum((double)(i+1),'f',0);
+                html += "<p><br /><br /></p><p><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("RangÃ©e")+" nÂ° "+str.setNum((double)(i+1),'f',0);
                 html += " :</strong></span></p>";
                 if(zomito->triangle(i))
                     html += "<p align=center><img height=\"317\" width=\"357\" src=\":/images/zome/zomTriangle\" /></p>";
@@ -1479,8 +1497,8 @@ void fenPrincipale::exporterEnPDF()
         printer.setOutputFileName(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer un fichier"), QObject::tr("Heliyourte")+".pdf", QObject::tr("Document")+" Pdf (*.pdf)"));
 
         // on donne au QTextEdit le code HTML a interpreter
-        html = "<p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("Compte-rendu technique d'une Héliyourte")+"</strong></span></p>";
-        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document généré automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("développé par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
+        html = "<p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("Compte-rendu technique d'une HÃ©liyourte")+"</strong></span></p>";
+        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document gÃ©nÃ©rÃ© automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("dÃ©veloppÃ© par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
         html += "<p align=right><img height=\"91\" width=\"220\" src=\":/images/logoArdheia\" /></p>";
         html += "<p><br /><br /></p><p align=center><img src=\"im1.bmp\" /></p>";
         html += "<p><br /><br /></p><p align=center><span style=\"font-size: 18pt; color: #ff9900;\"><strong>"+QObject::tr("M")+"</strong></span><span style=\"font-size: 14pt; color: #000000;\"><strong>"+QObject::tr("ETHODE DE CONSTRUCTION")+"</strong></span></p>";
@@ -1521,9 +1539,9 @@ void fenPrincipale::exporterEnPDF()
         html += "<p><br /></p>";
         html += heliY->tableauTraverse();
         html += "<p><br /><br /></p><p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("L")+"</strong></span><span style=\"font-size: 14pt; color: #ff9900;\"><strong>"+QObject::tr("A TOILE")+"</strong></span></p>";
-        html += "<p>"+QObject::tr("Les résultats suivants on été obtenus avec les paramètres suivants : <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Largeur de laize : ")+"<strong>"+str.setNum(fenPrincipale::ui->hlyToileLargeurLaize->value(),'f',2)+" m</strong>";
-        html += QObject::tr("<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Orientation : ")+"<strong>"+str.setNum(fenPrincipale::ui->hlyToileOrientation->value())+" °</strong>";
-        html += QObject::tr("<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Décalage : ")+"<strong>"+str.setNum(fenPrincipale::ui->hlyToileDecalage->value(),'f',2)+" m</strong></p>";
+        html += "<p>"+QObject::tr("Les rÃ©sultats suivants on Ã©tÃ© obtenus avec les paramÃ¨tres suivants : <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Largeur de laize : ")+"<strong>"+str.setNum(fenPrincipale::ui->hlyToileLargeurLaize->value(),'f',2)+" m</strong>";
+        html += QObject::tr("<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Orientation : ")+"<strong>"+str.setNum(fenPrincipale::ui->hlyToileOrientation->value())+" Â°</strong>";
+        html += QObject::tr("<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - DÃ©calage : ")+"<strong>"+str.setNum(fenPrincipale::ui->hlyToileDecalage->value(),'f',2)+" m</strong></p>";
         html += "<p><br /></p>";
         html += toileY->toiExplicationToile();
         for(int i=0;i<1;i++)
@@ -1586,7 +1604,7 @@ void fenPrincipale::exporterEnPDF()
             cha = "V "+str.setNum(fenPrincipale::ui->geoFrequenceA->value())+" "+str2.setNum(fenPrincipale::ui->geoFrequenceB->value());
         // on donne au QTextEdit le code HTML a interpreter
         html = "<p align=center><span style=\"font-size: 18pt; color: #000000;\"><strong>"+QObject::tr("Compte-rendu technique d'un Geodome")+" "+cha+"</strong></span></p>";
-        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document généré automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("développé par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
+        html += "<p align=right><span style=\"font-size: 12pt; color: #000000;\"><em>"+QObject::tr("Document gÃ©nÃ©rÃ© automatiquement par le logiciel ZomeDomeEtCie (version")+" "+version()+") "+QObject::tr("dÃ©veloppÃ© par l'association ARDHEIA")+" <a href=\"http://ardheia.free.fr\">http://ardheia.free.fr</a></em></span></p>";
         html += "<p align=right><img height=\"91\" width=\"220\" src=\":/images/logoArdheia\" /></p>";
         html += "<p><br /><br /></p><p align=center><img src=\"im1.bmp\" /></p>";
         html += "<p><br /></p>";
@@ -1670,7 +1688,7 @@ void fenPrincipale::exporterEnPDF()
 
 }
 
-void fenPrincipale::on_actionExporter_capture_3D_activated()
+void fenPrincipale::on_actionExporter_capture_3D_triggered()
 {
     QImage image;
     if(fenPrincipale::ui->ongletsChoixStructure->currentIndex()==0)
@@ -1683,14 +1701,14 @@ void fenPrincipale::on_actionExporter_capture_3D_activated()
             break;
         case 1:
             image = glWidgetVouteNidAbeilleChevronDroite->captureEcran();
-            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un chevron penché à droite"), QObject::tr("chevronDroiteVouteNidAbeille")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
+            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un chevron penchÃ© Ã  droite"), QObject::tr("chevronDroiteVouteNidAbeille")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         case 2:
             image = glWidgetVouteNidAbeilleChevronTronque->captureEcran();
-            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un chevron tronqué"), QObject::tr("chevronTronqueVouteNidAbeille")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
+            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un chevron tronquÃ©"), QObject::tr("chevronTronqueVouteNidAbeille")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         default:
-            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste à capturer et enregistrer les vues 3D"));
+            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste Ã  capturer et enregistrer les vues 3D"));
             break;
         }
     }
@@ -1708,7 +1726,7 @@ void fenPrincipale::on_actionExporter_capture_3D_activated()
             image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un chevron du dome en nid d'abeille"), QObject::tr("chevronDomeNidAbeille")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         default:
-            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste à capturer et enregistrer les vues 3D"));
+            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste Ã  capturer et enregistrer les vues 3D"));
             break;
         }
     }
@@ -1726,7 +1744,7 @@ void fenPrincipale::on_actionExporter_capture_3D_activated()
             image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un element de zome"), QObject::tr("elementZome")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         default:
-            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste à capturer et enregistrer les vues 3D"));
+            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste Ã  capturer et enregistrer les vues 3D"));
             break;
         }
     }
@@ -1737,26 +1755,26 @@ void fenPrincipale::on_actionExporter_capture_3D_activated()
         {
         case 0:
             image = glWidgetHeliyourte->captureEcran();
-            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D de l'héliyourte"), QObject::tr("generalHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
+            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D de l'hÃ©liyourte"), QObject::tr("generalHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         case 1:
             image = glWidgetHeliyourtePerche->captureEcran();
-            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'une perche de l'héliyourte"), QObject::tr("percheHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Image")+"s Bmp (*.bmp)"),0,100);
+            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'une perche de l'hÃ©liyourte"), QObject::tr("percheHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Image")+"s Bmp (*.bmp)"),0,100);
             break;
         case 2:
             image = glWidgetHeliyourteMontant->captureEcran();
-            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un poteau de l'héliyourte"), QObject::tr("poteauHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
+            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'un poteau de l'hÃ©liyourte"), QObject::tr("poteauHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         case 3:
             image = glWidgetHeliyourteCroix->captureEcran();
-            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'une croix de l'héliyourte"), QObject::tr("croixHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
+            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'une croix de l'hÃ©liyourte"), QObject::tr("croixHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         case 4:
             image = glWidgetHeliyourteTraverse->captureEcran();
-            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'une traverse de l'héliyourte"), QObject::tr("traverseHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
+            image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D d'une traverse de l'hÃ©liyourte"), QObject::tr("traverseHeliyourte")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         default:
-            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste à capturer et enregistrer les vues 3D"));
+            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste Ã  capturer et enregistrer les vues 3D"));
             break;
         }
     }
@@ -1770,13 +1788,13 @@ void fenPrincipale::on_actionExporter_capture_3D_activated()
             image.save(QFileDialog::getSaveFileName(this, QObject::tr("Enregistrer capture 3D du Geodome"), QObject::tr("Geodome")+".jpg", QObject::tr("Images")+" Jpeg (*.jpg);;"+QObject::tr("Images")+" Bmp (*.bmp)"),0,100);
             break;
         default:
-            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste à capturer et enregistrer les vues 3D"));
+            QMessageBox::warning(this,QObject::tr("Pas de visualisation 3D sur cet onglet"),QObject::tr("Cette fonction sert juste Ã  capturer et enregistrer les vues 3D"));
             break;
         }
     }
 }
 
-void fenPrincipale::on_actionOuvrir_activated()
+void fenPrincipale::on_actionOuvrir_triggered()
 {
     //la on recupere l arbre xml dans le fichier a ouvrir
     nomDeFichier = QFileDialog::getOpenFileName(this, QObject::tr("Ouvrir"), "", QObject::tr("Sauvegarde")+" ZomeDomeEtCie (*.zdc)");
@@ -1791,13 +1809,13 @@ void fenPrincipale::ouvrir(QString nom)
     QFile fichier(nom);
     if(!fichier.open(QIODevice::ReadOnly))
     {
-         QMessageBox::warning(this,QObject::tr("Erreur à l'ouverture de la sauvegarde"),QObject::tr("La sauvegarde n'a pas pu être ouverte")+".");
+         QMessageBox::warning(this,QObject::tr("Erreur Ã  l'ouverture de la sauvegarde"),QObject::tr("La sauvegarde n'a pas pu Ãªtre ouverte")+".");
          return;
     }
     if (!doc.setContent(&fichier))
     {
          fichier.close();
-         QMessageBox::warning(this,QObject::tr("Erreur à la lecture du fichier sauvegarde"),QObject::tr("il y a des erreurs dans le fichier")+".");
+         QMessageBox::warning(this,QObject::tr("Erreur Ã  la lecture du fichier sauvegarde"),QObject::tr("il y a des erreurs dans le fichier")+".");
          return;
      }
 
@@ -2126,6 +2144,10 @@ void fenPrincipale::ouvrir(QString nom)
                             fenPrincipale::ui->hlyToileOrientation->setValue(grandChild2.text().toInt());
                         if (grandChild2.tagName() == "decalage")
                             fenPrincipale::ui->hlyToileDecalage->setValue(grandChild2.text().toDouble());
+                        if (grandChild2.tagName() == "typeCouture")
+                            fenPrincipale::ui->hlyTypeCouture->setCurrentIndex(grandChild2.text().toInt());
+                        if (grandChild2.tagName() == "largeurCouture")
+                            fenPrincipale::ui->hlyLargeurCouture->setValue(grandChild2.text().toDouble());
                         grandChild2 = grandChild2.nextSibling().toElement();
                     }
                 }
@@ -2175,9 +2197,9 @@ void fenPrincipale::ouvrir(QString nom)
     rafraichirGeodome();
 }
 
-void fenPrincipale::on_actionQuitter_activated()
+void fenPrincipale::on_actionQuitter_triggered()
 {
-    int reponse = QMessageBox::question(this, QObject::tr("Fin"), QObject::tr("Etes-vous sûr(e) de vouloir quitter ?"), QMessageBox::Yes | QMessageBox::No);
+    int reponse = QMessageBox::question(this, QObject::tr("Fin"), QObject::tr("Etes-vous sÃ»r(e) de vouloir quitter ?"), QMessageBox::Yes | QMessageBox::No);
     if (reponse == QMessageBox::Yes)
     {
         QCoreApplication::quit();
@@ -2198,7 +2220,7 @@ void fenPrincipale::enregistrer()
     QString systemId = "";//http://www-imagis.imag.fr/DTD/stone1.dtd";
     QDomDocument doc(impl.createDocumentType(name,publicId,systemId));
 
-    doc.appendChild(doc.createComment("Ce fichier est fichier de sauvegarde du logiciel ZomeDomeEtCie développé par l'association ARDHEIA"));
+    doc.appendChild(doc.createComment("Ce fichier est fichier de sauvegarde du logiciel ZomeDomeEtCie dÃ©veloppÃ© par l'association ARDHEIA"));
     doc.appendChild(doc.createComment("http://ardheia.free.fr"));
     doc.appendChild(doc.createComment("La version du logiciel est la : "+version()));
     doc.appendChild(doc.createTextNode("\n")); // on retourne a la ligne
@@ -2455,9 +2477,15 @@ void fenPrincipale::enregistrer()
     hlyToileOrientationNoeud.appendChild(doc.createTextNode(str.setNum((double)fenPrincipale::ui->hlyToileOrientation->value(),'f',0)));
     QDomElement hlyToileDecalageNoeud = doc.createElement("decalage");
     hlyToileDecalageNoeud.appendChild(doc.createTextNode(str.setNum((double)fenPrincipale::ui->hlyToileDecalage->value(),'f',2)));
+    QDomElement hlyToileTypeCouture = doc.createElement("typeCouture");
+    hlyToileDecalageNoeud.appendChild(doc.createTextNode(str.setNum((double)fenPrincipale::ui->hlyTypeCouture->currentIndex(),'f',0)));
+    QDomElement hlyToileLargeurCouture = doc.createElement("largeurCouture");
+    hlyToileDecalageNoeud.appendChild(doc.createTextNode(str.setNum((double)fenPrincipale::ui->hlyLargeurCouture->value(),'f',1)));
     hlyToileNoeud.appendChild(hlyToileLargeurLaizeNoeud);
     hlyToileNoeud.appendChild(hlyToileOrientationNoeud);
     hlyToileNoeud.appendChild(hlyToileDecalageNoeud);
+    hlyToileNoeud.appendChild(hlyToileTypeCouture);
+    hlyToileNoeud.appendChild(hlyToileLargeurCouture);
 
     hlystructureNoeud.appendChild(hlyToileNoeud);
 
@@ -2499,14 +2527,14 @@ void fenPrincipale::enregistrer()
 
 }
 
-void fenPrincipale::on_actionEnregistrer_activated()
+void fenPrincipale::on_actionEnregistrer_triggered()
 {
     if(nomDeFichier=="")
         nomDeFichier = QFileDialog::getSaveFileName(this,QObject::tr("Enregistrer sous")+" ...","sauv",QObject::tr("Sauvegarde")+" ZomeDomeEtCie (*.zdc)");
     enregistrer();
 }
 
-void fenPrincipale::on_actionEnregistrer_sous_activated()
+void fenPrincipale::on_actionEnregistrer_sous_triggered()
 {
     nomDeFichier = QFileDialog::getSaveFileName(this,QObject::tr("Enregistrer sous")+" ...","sauv",QObject::tr("Sauvegarde")+" ZomeDomeEtCie (*.zdc)");
     enregistrer();

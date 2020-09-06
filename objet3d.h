@@ -2,8 +2,8 @@
 #define OBJET3D_H
 
 /*
-  ça c'est une librairie vraiment spécifique au traçage en 3D, qui définit la géométrie dans laquelle est stockée
-  l'objet, qui définit les fonctions openGL à envoyer pour le dessiner
+  Ã§a c'est une librairie vraiment spÃ©cifique au traÃ§age en 3D, qui dÃ©finit la gÃ©omÃ©trie dans laquelle est stockÃ©e
+  l'objet, qui dÃ©finit les fonctions openGL Ã  envoyer pour le dessiner
 */
 
 
@@ -20,7 +20,7 @@ struct Geometry
     QVector<GLushort> faces;
     // tableau qui contient les lignes pour le dessin en filaire
     QVector<GLushort> lignes;
-    // Qvector3D c'est un type de vecteurs (ou de points) 3d avec x, y et z
+    // Qvector3D c est un type de vecteurs (ou de points) 3d avec x, y et z
     // les vertices ca va etre les sommets de notre objet
     QVector<QVector3D> vertices;
     // les normales a chaque sommet, qui permettent l'affichage avec l'eclairage

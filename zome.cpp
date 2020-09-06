@@ -117,12 +117,12 @@ QString zome::debit()
         resu = "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Les losanges")+"</strong></span></p>";
         if(zom_rangees<zom_nombreOrdre)
         {
-            resu += "<p>"+QObject::tr("Il y a en tout")+" <strong>"+str.setNum((double)(zom_rangees-1),'f',0)+"</strong> "+QObject::tr("rangees de losanges complets, avec à chaque fois")+" <strong>"+str2.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("losanges par rangée soit un total de")+" <strong>"+str3.setNum((double)(zom_nombreOrdre*(zom_rangees-1)),'f',0)+"</strong> "+QObject::tr("losanges complets")+".<br />";
-            resu += ""+QObject::tr("Il y a aussi la première rangée constituée de")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("triangles")+"</p>";
+            resu += "<p>"+QObject::tr("Il y a en tout")+" <strong>"+str.setNum((double)(zom_rangees-1),'f',0)+"</strong> "+QObject::tr("rangees de losanges complets, avec Ã  chaque fois")+" <strong>"+str2.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("losanges par rangÃ©e soit un total de")+" <strong>"+str3.setNum((double)(zom_nombreOrdre*(zom_rangees-1)),'f',0)+"</strong> "+QObject::tr("losanges complets")+".<br />";
+            resu += ""+QObject::tr("Il y a aussi la premiÃ¨re rangÃ©e constituÃ©e de")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("triangles")+"</p>";
         }
         else
         {
-            resu += "<p>"+QObject::tr("Il y a en tout")+" <strong>"+str.setNum((double)(zom_rangees-1),'f',0)+"</strong> "+QObject::tr("rangees de losanges complets, avec à chaque fois")+" <strong>"+str2.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("losanges par rangée soit un total de")+" <strong>"+str3.setNum((double)(zom_nombreOrdre*(zom_rangees-1)),'f',0)+"</strong> "+QObject::tr("losanges complets")+".</p>";
+            resu += "<p>"+QObject::tr("Il y a en tout")+" <strong>"+str.setNum((double)(zom_rangees-1),'f',0)+"</strong> "+QObject::tr("rangees de losanges complets, avec Ã  chaque fois")+" <strong>"+str2.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("losanges par rangÃ©e soit un total de")+" <strong>"+str3.setNum((double)(zom_nombreOrdre*(zom_rangees-1)),'f',0)+"</strong> "+QObject::tr("losanges complets")+".</p>";
          }
         resu += "<p>"+QObject::tr("Les planches (4 par losange) pour tailler ces losanges auront au maximum les dimensions suivantes")+" :<br />";
         resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("epaisseur")+" : <strong>"+str.setNum(zom_epaisseurChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
@@ -147,7 +147,7 @@ QString zome::debit()
              debitLos = metrageLin*zom_epaisseurChevronsMethode1*zom_retombeeChevronsMethode1;
              resu += "<p>"+QObject::tr("Il faut donc")+" <strong>"+str.setNum((double)((zom_rangees-1)*4)*zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("planches de cette longueur")+".</p>";
         }
-        resu += "<p>"+QObject::tr("Ce qui nous donne un métrage linéaire total de")+" <strong>"+str2.setNum(metrageLin,'f',2)+"</strong> m "+QObject::tr("et un débit total de")+" <strong>"+str.setNum(debitLos,'f',2)+"</strong> m3.</p>";
+        resu += "<p>"+QObject::tr("Ce qui nous donne un mÃ©trage linÃ©aire total de")+" <strong>"+str2.setNum(metrageLin,'f',2)+"</strong> m "+QObject::tr("et un dÃ©bit total de")+" <strong>"+str.setNum(debitLos,'f',2)+"</strong> m3.</p>";
         resu += "<p></p>";
 
         mldiagvert = 0;
@@ -159,12 +159,12 @@ QString zome::debit()
         }
 
         resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Les diagonales pour contreventer les losanges")+"</strong></span></p>";
-        resu += "<p>"+QObject::tr("Si vous souhaitez contreventer les losanges avec des diagonales verticales, vous aurez alors")+" <strong>"+str.setNum(mldiagvert*zom_nombreOrdre,'f',1)+"</strong> ml "+QObject::tr("de planches supplémentaire à prévoir, soit un débit de")+" <strong>"+str2.setNum(mldiagvert*zom_nombreOrdre*zom_retombeeChevronsMethode1*zom_epaisseurChevronsMethode1,'f',2)+"</strong> m3.</p>";
-        resu += "<p>"+QObject::tr("Si vous souhaitez contreventer les losanges avec des diagonales horizontales, vous aurez alors")+" <strong>"+str.setNum(mldiaghoriz*zom_nombreOrdre,'f',1)+"</strong> ml "+QObject::tr("de planches supplémentaire à prévoir, soit un débit de")+" <strong>"+str2.setNum(mldiaghoriz*zom_nombreOrdre*zom_retombeeChevronsMethode1*zom_epaisseurChevronsMethode1,'f',2)+"</strong> m3.</p>";
+        resu += "<p>"+QObject::tr("Si vous souhaitez contreventer les losanges avec des diagonales verticales, vous aurez alors")+" <strong>"+str.setNum(mldiagvert*zom_nombreOrdre,'f',1)+"</strong> ml "+QObject::tr("de planches supplÃ©mentaire Ã  prÃ©voir, soit un dÃ©bit de")+" <strong>"+str2.setNum(mldiagvert*zom_nombreOrdre*zom_retombeeChevronsMethode1*zom_epaisseurChevronsMethode1,'f',2)+"</strong> m3.</p>";
+        resu += "<p>"+QObject::tr("Si vous souhaitez contreventer les losanges avec des diagonales horizontales, vous aurez alors")+" <strong>"+str.setNum(mldiaghoriz*zom_nombreOrdre,'f',1)+"</strong> ml "+QObject::tr("de planches supplÃ©mentaire Ã  prÃ©voir, soit un dÃ©bit de")+" <strong>"+str2.setNum(mldiaghoriz*zom_nombreOrdre*zom_retombeeChevronsMethode1*zom_epaisseurChevronsMethode1,'f',2)+"</strong> m3.</p>";
 
         break;
     case 1: //juste visualisation
-        resu = "<p>"+QObject::tr("Pour cette méthode de construction, toutes les infos sont rassemblées dans l\'onglet \"Aide à la construction\"")+"</p>";
+        resu = "<p>"+QObject::tr("Pour cette mÃ©thode de construction, toutes les infos sont rassemblÃ©es dans l\'onglet \"Aide Ã  la construction\"")+"</p>";
         break;
     }
 
@@ -180,37 +180,37 @@ QString zome::explicationLosange(int num)
     case 0: //methode losange
         if((zom_nombreOrdre!=zom_rangees)&&(num==(zom_rangees-1)))
         {
-            resu = "<p>"+QObject::tr("Il y a")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("triangles sur la rangée n°")+" <strong>"+str2.setNum((double)(num+1),'f',0)+"</strong>.<br />"+QObject::tr("Un triangle est composé de 3 chevrons différents, aux dimensions suivantes")+" :<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("épaisseur (commune aux 3)")+" : <strong>" + str.setNum(zom_epaisseurChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombée (commune aux 3)")+" : <strong>" + str.setNum(zom_retombeeChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
+            resu = "<p>"+QObject::tr("Il y a")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("triangles sur la rangÃ©e nÂ°")+" <strong>"+str2.setNum((double)(num+1),'f',0)+"</strong>.<br />"+QObject::tr("Un triangle est composÃ© de 3 chevrons diffÃ©rents, aux dimensions suivantes")+" :<br />";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Ã©paisseur (commune aux 3)")+" : <strong>" + str.setNum(zom_epaisseurChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombÃ©e (commune aux 3)")+" : <strong>" + str.setNum(zom_retombeeChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
             resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("longueur")+" L1 = L1\' : <strong>" + str.setNum(los_m1[num].longueur*100.0,'f',1)+"</strong> cm<br />";
             resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("longueur")+" L3 : <strong>" + str.setNum(los_m1[num].DiagHorizInt*100.0,'f',1)+"</strong> cm<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle")+" alpha1 : <strong>" + str.setNum(degres(los_m1[num].beta),'f',1)+"</strong> °<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle")+" alpha2 = alpha : <strong>" + str.setNum(degres(los_m1[num].alpha/2.0),'f',1)+"</strong> °</p>";
-            resu += "<p>"+QObject::tr("Les triangles de cette rangée")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeePrecedente),'f',0)+"</strong> ° "+QObject::tr("avec les losanges de la rangée précédente")+" (<strong>"+str3.setNum((double)(num),'f',0)+"</strong>).<br />";
-            resu += ""+QObject::tr("Les triangles de cette rangée")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Omega avec l'horizontale de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecHorizontale),'f',1)+"</strong> °.<br />";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle")+" alpha1 : <strong>" + str.setNum(degres(los_m1[num].beta),'f',1)+"</strong> Â°<br />";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle")+" alpha2 = alpha : <strong>" + str.setNum(degres(los_m1[num].alpha/2.0),'f',1)+"</strong> Â°</p>";
+            resu += "<p>"+QObject::tr("Les triangles de cette rangÃ©e")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeePrecedente),'f',0)+"</strong> Â° "+QObject::tr("avec les losanges de la rangÃ©e prÃ©cÃ©dente")+" (<strong>"+str3.setNum((double)(num),'f',0)+"</strong>).<br />";
+            resu += ""+QObject::tr("Les triangles de cette rangÃ©e")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Omega avec l'horizontale de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecHorizontale),'f',1)+"</strong> Â°.<br />";
 
         }
         else
         {
-            resu = "<p>"+QObject::tr("Il y a")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("losanges sur la rangée n°")+" <strong>"+str2.setNum((double)(num+1),'f',0)+"</strong>.<br />"+QObject::tr("Un losange est constitué de 4 chevrons identiques, aux dimensions suivantes")+" :<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("épaisseur")+" : <strong>" + str.setNum(zom_epaisseurChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombée")+" : <strong>" + str.setNum(zom_retombeeChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
+            resu = "<p>"+QObject::tr("Il y a")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("losanges sur la rangÃ©e nÂ°")+" <strong>"+str2.setNum((double)(num+1),'f',0)+"</strong>.<br />"+QObject::tr("Un losange est constituÃ© de 4 chevrons identiques, aux dimensions suivantes")+" :<br />";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Ã©paisseur")+" : <strong>" + str.setNum(zom_epaisseurChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("retombÃ©e")+" : <strong>" + str.setNum(zom_retombeeChevronsMethode1*100.0,'f',1)+"</strong> cm<br />";
             resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("longueur \'brute, hors coupe\'")+" : <strong>" + str.setNum(los_m1[num].longueurPlancheBrut*100.0,'f',1)+"</strong> cm<br />";
             resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("longueur")+" L1 : <strong>" + str.setNum(los_m1[num].longueur*100.0,'f',1)+"</strong> cm<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle")+" alpha1 : <strong>" + str.setNum(degres(los_m1[num].beta),'f',1)+"</strong> °<br />";
-            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle inclinaison lame")+" : <strong>" + str.setNum(degres(los_m1[num].angleReglageLame),'f',1)+"</strong> °</p>";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle")+" alpha1 : <strong>" + str.setNum(degres(los_m1[num].beta),'f',1)+"</strong> Â°<br />";
+            resu += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("angle inclinaison lame")+" : <strong>" + str.setNum(degres(los_m1[num].angleReglageLame),'f',1)+"</strong> Â°</p>";
             if(num==0)
-                resu += "<p>"+QObject::tr("Les losanges la première rangée")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta entre eux de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeePrecedente),'f',0)+"</strong> °.<br />";
+                resu += "<p>"+QObject::tr("Les losanges la premiÃ¨re rangÃ©e")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta entre eux de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeePrecedente),'f',0)+"</strong> Â°.<br />";
             else
-                resu += "<p>"+QObject::tr("Les losanges de cette rangée")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeePrecedente),'f',0)+"</strong> ° "+QObject::tr("avec les losanges de la rangée précédente")+" (<strong>"+str3.setNum((double)(num),'f',0)+"</strong>).<br />";
+                resu += "<p>"+QObject::tr("Les losanges de cette rangÃ©e")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeePrecedente),'f',0)+"</strong> Â° "+QObject::tr("avec les losanges de la rangÃ©e prÃ©cÃ©dente")+" (<strong>"+str3.setNum((double)(num),'f',0)+"</strong>).<br />";
             if(num==(zom_nombreOrdre-2)&&(zom_nombreOrdre==zom_rangees))
-                resu += QObject::tr("Les losanges de la dernière rangée")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta entre eux de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeeSuivante),'f',0)+"</strong> °.<br />";
+                resu += QObject::tr("Les losanges de la derniÃ¨re rangÃ©e")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta entre eux de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeeSuivante),'f',0)+"</strong> Â°.<br />";
             else
-                resu += QObject::tr("Les losanges de cette rangée")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeeSuivante),'f',0)+"</strong> ° "+QObject::tr("avec ceux de la rangée suivante")+" (<strong>"+str3.setNum((double)(num+2),'f',0)+"</strong>).<br />";
-            resu += QObject::tr("Les losanges de cette rangée")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Omega avec l'horizontale de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecHorizontale),'f',1)+"</strong> °.<br />";
-            resu += QObject::tr("Si vous souhaitez contreventer avec des diagonales verticales : la longueur L2 (point à pointe) est de")+" <strong>"+str.setNum(los_m1[num].DiagVertInt*100.0,'f',1)+"</strong> cm "+QObject::tr("et l'angle des pointes est de")+" <strong>"+str2.setNum(degres(los_m1[num].beta),'f',1)+"</strong> °.<br />";
-            resu += QObject::tr("Si vous souhaitez contreventer avec des diagonales horizontales : la longueur L3 (point à pointe) est de")+" <strong>"+str.setNum(los_m1[num].DiagHorizInt*100.0,'f',1)+"</strong> cm "+QObject::tr("et l'angle des pointes est de")+" <strong>"+str2.setNum(degres(los_m1[num].alpha),'f',1)+"</strong> °.</p>";
+                resu += QObject::tr("Les losanges de cette rangÃ©e")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Beta de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecRangeeSuivante),'f',0)+"</strong> Â° "+QObject::tr("avec ceux de la rangÃ©e suivante")+" (<strong>"+str3.setNum((double)(num+2),'f',0)+"</strong>).<br />";
+            resu += QObject::tr("Les losanges de cette rangÃ©e")+" (<strong>"+str.setNum((double)(num+1),'f',0)+"</strong>) "+QObject::tr("font un angle Omega avec l'horizontale de")+" <strong>"+str2.setNum(degres(los_m1[num].angleAvecHorizontale),'f',1)+"</strong> Â°.<br />";
+            resu += QObject::tr("Si vous souhaitez contreventer avec des diagonales verticales : la longueur L2 (point Ã  pointe) est de")+" <strong>"+str.setNum(los_m1[num].DiagVertInt*100.0,'f',1)+"</strong> cm "+QObject::tr("et l'angle des pointes est de")+" <strong>"+str2.setNum(degres(los_m1[num].beta),'f',1)+"</strong> Â°.<br />";
+            resu += QObject::tr("Si vous souhaitez contreventer avec des diagonales horizontales : la longueur L3 (point Ã  pointe) est de")+" <strong>"+str.setNum(los_m1[num].DiagHorizInt*100.0,'f',1)+"</strong> cm "+QObject::tr("et l'angle des pointes est de")+" <strong>"+str2.setNum(degres(los_m1[num].alpha),'f',1)+"</strong> Â°.</p>";
         }
         break;
     case 1: //juste visualisation
@@ -223,20 +223,20 @@ QString zome::explicationLosange(int num)
 QString zome::explicationGenerale()
 {
     QString str,str2,str3,str4,str5,str6,cha,resu;
-    resu = "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A) "+QObject::tr("Généralités")+"</strong></span></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("C\'est l\'américain Steve Bear qui fût le premier (?), dans les années soixante, à étudier sa géométrie et le développer pour l\'habitat. C'est lui aussi qui lui donna son nom, mariant le ZO de rhombizonaèdre et le ME du dôme")+".<br />";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Solide géométrique rythmé par les nombres (nombre de forme, nombre d\'ordre..), il rappelle des structures observables dans la nature, architectures minérales et végétales fondées sur le nombre d\'or. Il constitue en effet un assemblage de rangées de losanges successifs, ayant tous la même longueur de côté mais des rapport entre diagonales différents, enroulés en double hélice")+".</p>";
+    resu = "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A) "+QObject::tr("GÃ©nÃ©ralitÃ©s")+"</strong></span></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("C\'est l\'amÃ©ricain Steve Bear qui fÃ»t le premier (?), dans les annÃ©es soixante, Ã  Ã©tudier sa gÃ©omÃ©trie et le dÃ©velopper pour l\'habitat. C'est lui aussi qui lui donna son nom, mariant le ZO de rhombizonaÃ¨dre et le ME du dÃ´me")+".<br />";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Solide gÃ©omÃ©trique rythmÃ© par les nombres (nombre de forme, nombre d\'ordre..), il rappelle des structures observables dans la nature, architectures minÃ©rales et vÃ©gÃ©tales fondÃ©es sur le nombre d\'or. Il constitue en effet un assemblage de rangÃ©es de losanges successifs, ayant tous la mÃªme longueur de cÃ´tÃ© mais des rapport entre diagonales diffÃ©rents, enroulÃ©s en double hÃ©lice")+".</p>";
     resu += "<p><br /></p>";
-    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B) "+QObject::tr("Rappel des paramètres constructifs importants")+"</strong></span></p>";
+    resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B) "+QObject::tr("Rappel des paramÃ¨tres constructifs importants")+"</strong></span></p>";
     if(zom_methodeConstruction == 1)
         cha = QObject::tr("simple");
     else
         cha = QObject::tr("losanges");
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("méthode construction")+" : <strong>"+cha+"</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("mÃ©thode construction")+" : <strong>"+cha+"</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("nombre d\'ordre")+" <n> : <strong>"+str.setNum(zom_nombreOrdre)+"</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("nombre de forme")+" <k> : <strong>"+str.setNum(zom_nombreForme)+"</strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("échelle")+" <l> : <strong>"+str.setNum(zom_petiteDiagonaleRangee1)+"</strong></p>";
-    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rangées")+" <r> : <strong>"+str.setNum(zom_rangees)+"</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("Ã©chelle")+" <l> : <strong>"+str.setNum(zom_petiteDiagonaleRangee1)+"</strong></p>";
+    resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("rangÃ©es")+" <r> : <strong>"+str.setNum(zom_rangees)+"</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("volume")+" : <strong>"+str.setNum(volume(),'f',1)+" m3</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("surface au sol")+" : <strong>"+str.setNum(surfaceAuSol(),'f',1)+" m2</strong></p>";
     resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "+QObject::tr("surface de toit")+" : <strong>"+str.setNum(surfaceDeToit(),'f',1)+" m2</strong></p>";
@@ -247,24 +247,24 @@ QString zome::explicationGenerale()
     {
     case 0: //methode losange
         resu += "<p><span style=\"color: #ff9900;\"><strong><span style=\"font-size: 12pt;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C) "+QObject::tr("Les losanges")+"</span></strong></span></p>";
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Nous allons dans un premier temps faire du travail à la chaîne, c\'est-à-dire fabriquer tous les losanges")+".</p>";
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La méthode proposée pour tailler un losange est la suivante")+" :</p>";
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>I</strong> - "+QObject::tr("couper les planches à la longueur brute")+".</p>";
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>II</strong> - "+QObject::tr("découper les angles des 2 bouts")+".</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Nous allons dans un premier temps faire du travail Ã  la chaÃ®ne, c\'est-Ã -dire fabriquer tous les losanges")+".</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La mÃ©thode proposÃ©e pour tailler un losange est la suivante")+" :</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>I</strong> - "+QObject::tr("couper les planches Ã  la longueur brute")+".</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>II</strong> - "+QObject::tr("dÃ©couper les angles des 2 bouts")+".</p>";
         resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>III</strong> - "+QObject::tr("assembler les 4 planches en les vissant en bout afin de constituer un losange")+".</p>";
         resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>IV</strong> - "+QObject::tr("renforcer les losanges avec un contreventement horizontal ou vertical si vous le souhaitez")+".</p>";
         resu += "<p><br /></p>";
         resu += "<p><span style=\"font-size: 12pt; color: #ff9900;\"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D) "+QObject::tr("Fixations des Losanges entre eux")+"</strong></span></p>";
         resu += "<p align=center><img height=\"143\" width=\"208\" src=\":/images/zome/zomAngle\" /></p>";
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La méthode proposée pour l'assemblage des losanges entre eux est d'utiliser des tiges filetées préalablement coudées à l'angle Beta indiqué. Selon la taille de la structure, il peut être pertinent de mettre 2 ou 3 tiges filetées par côté de losange")+". <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour couder une tige fileté sans l'abimer, on utilisera par exemple un etau qui tient un côté entre des cales en bois, et de l'autre, un tube assez long pour avoir un bras de levier suffisant afin de couder")+".</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("La mÃ©thode proposÃ©e pour l'assemblage des losanges entre eux est d'utiliser des tiges filetÃ©es prÃ©alablement coudÃ©es Ã  l'angle Beta indiquÃ©. Selon la taille de la structure, il peut Ãªtre pertinent de mettre 2 ou 3 tiges filetÃ©es par cÃ´tÃ© de losange")+". <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour couder une tige filetÃ© sans l'abimer, on utilisera par exemple un etau qui tient un cÃ´tÃ© entre des cales en bois, et de l'autre, un tube assez long pour avoir un bras de levier suffisant afin de couder")+".</p>";
         resu += "<p><br /></p>";
         resu += "<p><span style=\"font-size: 12pt;\"><strong><span style=\"color: #ff9900;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E) "+QObject::tr("Montage structure")+"</span></strong></span></p>";
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le montage débute par la rangée du bas (les triangles) et on monte en tournant rangée par rangée, pour arriver au sommet à la rangée n°1")+".</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le montage dÃ©bute par la rangÃ©e du bas (les triangles) et on monte en tournant rangÃ©e par rangÃ©e, pour arriver au sommet Ã  la rangÃ©e nÂ°1")+".</p>";
         if(zom_nombreOrdre!=zom_rangees)
-            resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le diamètre au sol du cercle circonscrit au zome est de")+" <strong>"+str2.setNum(zom_diametreSolInt,'f',2)+"</strong> m, "+QObject::tr("le diamètre au sol du cercle passant par les pointes des triangles est de")+" <strong>"+str.setNum(zom_diametreSolExt,'f',2)+"</strong> m.</p>";
+            resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le diamÃ¨tre au sol du cercle circonscrit au zome est de")+" <strong>"+str2.setNum(zom_diametreSolInt,'f',2)+"</strong> m, "+QObject::tr("le diamÃ¨tre au sol du cercle passant par les pointes des triangles est de")+" <strong>"+str.setNum(zom_diametreSolExt,'f',2)+"</strong> m.</p>";
         resu += "<p><br /></p>";
         resu += "<p><span style=\"font-size: 12pt;\"><strong><span style=\"color: #ff9900;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F) "+QObject::tr("Couverture, Ouvertures, Isolation")+"</span></strong></span></p>";
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour couvrir ce genre de structure, on peut utiliser tous les types de couverture traditionnelle. On apportera cependant un soin tout particulier à toutes les arêtes, potentielles sources de fuite")+" ...<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si l\'on désire effectuer une ouverture style velux, on prendra soin de consolider la structure au niveau du chevêtre")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si une porte de grandes dimensions doit être effectuée (style hangar), on reprendra le poids de la charpente par un linteau et deux poteaux descendant au sol")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("L'isolation peut se faire directement dans les caissons avec un isolant rigide ou semi-rigide. Pour les jonctions, il peut être utile d\'utiliser un isolant souple que l\'on pourra comprimer comme de la laine de chanvre")+"</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour couvrir ce genre de structure, on peut utiliser tous les types de couverture traditionnelle. On apportera cependant un soin tout particulier Ã  toutes les arÃªtes, potentielles sources de fuite")+" ...<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si l\'on dÃ©sire effectuer une ouverture style velux, on prendra soin de consolider la structure au niveau du chevÃªtre")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+QObject::tr("Si une porte de grandes dimensions doit Ãªtre effectuÃ©e (style hangar), on reprendra le poids de la charpente par un linteau et deux poteaux descendant au sol")+".<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("L'isolation peut se faire directement dans les caissons avec un isolant rigide ou semi-rigide. Pour les jonctions, il peut Ãªtre utile d\'utiliser un isolant souple que l\'on pourra comprimer comme de la laine de chanvre")+"</p>";
         resu += "<p><br /></p>";
         resu += "<p align=center><img height=\"502\" width=\"601\" src=\":/images/zome/zomLosangePhoto\" /></p>";
 
@@ -273,7 +273,7 @@ QString zome::explicationGenerale()
         int nbrbarres;
         resu += "<p><span style=\"color: #ff9900;\"><strong><span style=\"font-size: 12pt;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C) "+QObject::tr("Dimensions")+"</span></strong></span></p>";
         if(zom_nombreOrdre!=zom_rangees)
-            resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le diamètre au sol du cercle inscrit au zome est de")+" <strong>"+str2.setNum(zom_diametreSolInt,'f',2)+"</strong> m, "+QObject::tr("le diamètre au sol du cercle circonscrit, c'est à dire passant par les pointes des triangles est de")+" <strong>"+str.setNum(zom_diametreSolExt,'f',2)+"</strong> m.</p>";
+            resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Le diamÃ¨tre au sol du cercle inscrit au zome est de")+" <strong>"+str2.setNum(zom_diametreSolInt,'f',2)+"</strong> m, "+QObject::tr("le diamÃ¨tre au sol du cercle circonscrit, c'est Ã  dire passant par les pointes des triangles est de")+" <strong>"+str.setNum(zom_diametreSolExt,'f',2)+"</strong> m.</p>";
         if(zom_nombreOrdre==zom_rangees)
         {
             nbrbarres = (zom_rangees-1)*2*zom_nombreOrdre;
@@ -283,12 +283,12 @@ QString zome::explicationGenerale()
         {
             nbrbarres = ((zom_rangees-1)*2+1)*zom_nombreOrdre;
             resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Pour construire ce zome, il vous faut")+" <strong>"+str.setNum((double)nbrbarres,'f',0)+"</strong> "+QObject::tr("barres de")+" <strong>"+str2.setNum(zom_longeurCoteLosange*100.0,'f',1)+"</strong> cm "+QObject::tr("de long, soit")+" <strong>"+str3.setNum(zom_longeurCoteLosange*nbrbarres,'f',2)+"</strong> ml "+QObject::tr("de barre")+".</p>";
-            resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il vous faudra aussi")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("barres de")+" <strong>"+str2.setNum(los[zom_rangees-1].diagHoriz*100.0,'f',1)+"</strong> cm "+QObject::tr("de long afin de fermer les triangles du bas (diagonales horizontales), soit")+" <strong>"+str3.setNum(zom_nombreOrdre*los[zom_rangees-1].diagHoriz,'f',2)+"</strong> ml "+QObject::tr("de barre supplémentaires")+".</p>";
+            resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Il vous faudra aussi")+" <strong>"+str.setNum((double)zom_nombreOrdre,'f',0)+"</strong> "+QObject::tr("barres de")+" <strong>"+str2.setNum(los[zom_rangees-1].diagHoriz*100.0,'f',1)+"</strong> cm "+QObject::tr("de long afin de fermer les triangles du bas (diagonales horizontales), soit")+" <strong>"+str3.setNum(zom_nombreOrdre*los[zom_rangees-1].diagHoriz,'f',2)+"</strong> ml "+QObject::tr("de barre supplÃ©mentaires")+".</p>";
         }
-        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Voici, rangée par rangée, quelques dimensions caractéristiques afin de pouvoir par exemple fabriquer les connecteurs")+" :</p>";
+        resu += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+QObject::tr("Voici, rangÃ©e par rangÃ©e, quelques dimensions caractÃ©ristiques afin de pouvoir par exemple fabriquer les connecteurs")+" :</p>";
         resu += "<p><br /></p>";
         resu += "<table cellpadding=\"2\" border=\"1\" align=\"center\"><tbody><tr>";
-        resu += "<td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Rangée n°")+"</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Type")+"</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Diagonale Horizontale")+" (cm)</strong></p></td bgcolor=\"#cccc99\"><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Diagonale Verticale")+" (cm)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Angle")+" Alpha (°)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Angle")+" Beta (°)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Angle")+" Omega / "+QObject::tr("horizontale")+" (°)</strong></p></td></tr>";
+        resu += "<td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("RangÃ©e nÂ°")+"</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Type")+"</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Diagonale Horizontale")+" (cm)</strong></p></td bgcolor=\"#cccc99\"><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Diagonale Verticale")+" (cm)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Angle")+" Alpha (Â°)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Angle")+" Beta (Â°)</strong></p></td><td bgcolor=\"#cccc99\"><p align=\"center\"><strong>"+QObject::tr("Angle")+" Omega / "+QObject::tr("horizontale")+" (Â°)</strong></p></td></tr>";
         for(int i=0;i<zom_rangees;i++)
         {
             if((i==(zom_rangees-1))&&(zom_nombreOrdre!=zom_rangees)) // triangle
@@ -532,11 +532,11 @@ QStringList zome::listeLosanges()
         for(int i=0;i<zom_rangees;i++)
         {
             if((i==(zom_rangees-1))&&(zom_rangees!=zom_nombreOrdre))
-                m_liste << str2.setNum((double)zom_nombreOrdre,'f',0)+" "+QObject::tr("triangles de la rangée n°")+str.setNum((double)(i+1),'f',0);
+                m_liste << str2.setNum((double)zom_nombreOrdre,'f',0)+" "+QObject::tr("triangles de la rangÃ©e nÂ°")+str.setNum((double)(i+1),'f',0);
             else if((i==(zom_rangees-1))&&(zom_rangees==zom_nombreOrdre))
                 int h;
             else
-                m_liste << str2.setNum((double)zom_nombreOrdre,'f',0)+" "+QObject::tr("losanges de la rangée n°")+str.setNum((double)(i+1),'f',0);
+                m_liste << str2.setNum((double)zom_nombreOrdre,'f',0)+" "+QObject::tr("losanges de la rangÃ©e nÂ°")+str.setNum((double)(i+1),'f',0);
         }
         break;
     case 1:

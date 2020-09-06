@@ -121,7 +121,7 @@ void Patch::rotateRapportVecteurEtCentre(qreal deg, QVector3D axis, QVector3D ce
 }
 
 
-//
+/*
 static inline void qMultMatrix(const QMatrix4x4 &mat)
 {
     if (sizeof(qreal) == sizeof(GLfloat))
@@ -138,16 +138,18 @@ static inline void qMultMatrix(const QMatrix4x4 &mat)
             fmat[i] = r[i];
         glMultMatrixf(fmat);
     }
-}
-
+}*/
 //
+
+
 //! [2]
 void Patch::draw(bool p_filaire) const
 {
     //on copie la matrice d'affichage en la pushant
     glPushMatrix();
     //on la multiplie localement par la matrice de transformation
-    qMultMatrix(mat);
+   // qMultMatrix(mat);
+    glMultMatrixf(mat.constData());
     //definit le materiau de notre objet
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, faceColor);
     if(p_filaire)

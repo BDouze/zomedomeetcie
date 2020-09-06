@@ -1,4 +1,5 @@
-#include <QtGui/QApplication>
+//#include <QtGui/QApplication>
+#include <QtWidgets>
 #include "fenprincipale.h"
 
 int main(int argc, char *argv[])
@@ -6,6 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     fenPrincipale w;
     w.show();
+
     //if(argv[1]!="")
     //    w.ouvrir(argv[1]);
 

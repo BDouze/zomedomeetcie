@@ -4,11 +4,11 @@
 
 -----zome :
 
-- revoir calcul et explication cercle inscrit et circonscrit, pour que les gens puissent préparer leur plancher avant
+- revoir calcul et explication cercle inscrit et circonscrit, pour que les gens puissent prÃ©parer leur plancher avant
 
 -----heliyourte :
 
-- tissu, lais à découper avec qPainter, dessin capote
+- tissu, lais Ã  dÃ©couper avec qPainter, dessin capote
 
 -----geodome :
 

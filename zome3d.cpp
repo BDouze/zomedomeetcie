@@ -233,8 +233,8 @@ void zome3D::buildGeometry(qreal scale)
 
             int i = m_choix2;
 
-            //        quatSelonZ.setVector(0.0,0.0,1.0*qSin((j*2.0*pi/valeurG[0].x())/2.0));quatSelonZ.setScalar(qCos((j*2.0*pi/valeurG[0].x())/2.0));
-              //      quatSelonZ.normalize();
+            //      quatSelonZ.setVector(0.0,0.0,1.0*qSin((j*2.0*pi/valeurG[0].x())/2.0));quatSelonZ.setScalar(qCos((j*2.0*pi/valeurG[0].x())/2.0));
+            //      quatSelonZ.normalize();
             if((i==(los.size()-1))&&(i!=(valeurG[0].x()-1)))
             {
                 RectTriangleBasMethode1 losm1(geom,los[i].diagVert,los[i].diagHoriz,valeurG[1].x(),los[i].DiagVertInt,los[i].DiagHorizInt,valeurG[1].y());
@@ -335,16 +335,21 @@ QString zome3D::exportObj()
             geomtamp->vertices[debsom] = parts[i]->mat*geom->vertices[debsom];
         }
     }
+    // la on ajoute dans le fichiers tous les points
     for(int i=0;i<geom->vertices.size();i++)
     {
         resu += "v "+str.setNum(geomtamp->vertices[i].x(),'f',6)+" "+str2.setNum(geomtamp->vertices[i].y(),'f',6)+" "+str3.setNum(geomtamp->vertices[i].z(),'f',6)+"\n";
     }
+    // la on ajoute tous les veteurs normaux a chaque point
     for(int i=0;i<geom->vertices.size();i++)
     {
         resu += "vn "+str.setNum(geomtamp->normals[i].x(),'f',6)+" "+str2.setNum(geomtamp->normals[i].y(),'f',6)+" "+str3.setNum(geomtamp->normals[i].z(),'f',6)+"\n";
     }
     int comptparts = 0;
-    for(int j=0;j<objets.size();j++)
+    int cor = objets.size();
+    if(m_choix==0)
+        cor = cor/2.0;
+    for(int j=0;j<cor;j++)
     {
         resu += "o objet"+str.setNum(j)+"\n";
         resu += "usemtl couleur"+str.setNum(couleurs[j])+"\n";

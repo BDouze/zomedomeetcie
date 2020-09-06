@@ -14,7 +14,7 @@
 #include "geodome3d.h"
 
 /*
-  la on a tout pour gérer nos fenêtres 3D : le zoom, les boutons filaire/pas filaire, les rotations
+  la on a tout pour gÃ©rer nos fenÃªtres 3D : le zoom, les boutons filaire/pas filaire, les rotations
 */
 
 //! [0]

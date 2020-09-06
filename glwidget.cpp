@@ -1,7 +1,12 @@
-#include <QtGui>
+//#include <QtGui>
+#include <QtWidgets>
 #include <QtOpenGL>
 #include <QPushButton>
+
 #include <GL/glu.h>
+// a remplacer par la ligne suivante sous certaines compilations (sous mac ?)
+//#include <OpenGL/glu.h>
+
 #include <math.h>
 #include "mathema.h"
 
@@ -337,7 +342,7 @@ void GLWidget::zoom(int valeurZoom)
 void GLWidget::initializeGL()
 {
     //definit la couleur de fond : etonnant, le darker retourne la couleur en plus sombre, il existe lighter pour faire le contraire
-    qglClearColor(qtPurple.darker());
+    // qglClearColor(qtPurple.darker());
 
     // cree le logo en faisant passer comme argument l'endroit ou il doit etre cree et la precision du lissage
     // avant ca, si c'est pas la premiere fois, il detruit le pointeur pour liberer de la memoire
